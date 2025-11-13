@@ -1,0 +1,61 @@
+@model New_LeRayBookingSystem.Models.Appointment
+
+@{
+    ViewData["Title"] = "Book an Appointment";
+}
+
+<h2 class="mb-4 text-center">Book an Appointment</h2>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Select Service -->
+            <div class="form-group mb-3">
+                <label asp-for="ServiceId" class="form-label">Select a Service</label>
+                <select asp-for="ServiceId" class="form-select" asp-items="ViewBag.ServiceId">
+                    <option value="">-- Choose a Service --</option>
+                </select>
+                <span asp-validation-for="ServiceId" class="text-danger"></span>
+            </div>
+
+            <!-- Appointment Date -->
+            <div class="form-group mb-3">
+                <label asp-for="AppointmentDate" class="form-label">Appointment Date & Time</label>
+                <input asp-for="AppointmentDate" class="form-control" type="datetime-local" />
+                <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+            </div>
+
+            <!-- Promo Code (optional) -->
+            <div class="form-group mb-3">
+                <label asp-for="PromoCode" class="form-label">Promo Code (optional)</label>
+                <input asp-for="PromoCode" class="form-control" placeholder="Enter a promo code if you have one" />
+                <span asp-validation-for="PromoCode" class="text-danger"></span>
+            </div>
+
+            <!-- Notes -->
+            <div class="form-group mb-3">
+                <label asp-for="Notes" class="form-label">Additional Notes</label>
+                <textarea asp-for="Notes" class="form-control" rows="3" placeholder="Any special requests or notes?"></textarea>
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-grid mt-4">
+                <input type="submit" value="Confirm Appointment" class="btn btn-primary btn-lg" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="text-decoration-none">&laquo; Back to My Appointments</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

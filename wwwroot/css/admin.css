@@ -1,0 +1,90 @@
+/* ======= DARK MODE ADMIN DASHBOARD ======= */
+body {
+    background-color: #121212;
+    color: #eaeaea;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    z-index: 1030;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link {
+    color: #bbb;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 2px 0;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.sidebar .nav-link.text-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Sidebar collapsed for mobile */
+.sidebar.active {
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        transform: translateX(-100%);
+        width: 220px;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* Main content layout */
+.main-content {
+    margin-left: 240px;
+    transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Header */
+.main-header {
+    background-color: #1f1f1f;
+}
+
+/* Notification bell */
+.notification-bell {
+    cursor: pointer;
+}
+
+.notification-bell span {
+    width: 8px;
+    height: 8px;
+}
+
+/* Profile Section */
+.profile-section .profile-avatar i {
+    color: #6c757d;
+}
+
+.profile-edit:hover {
+    color: #fff;
+}

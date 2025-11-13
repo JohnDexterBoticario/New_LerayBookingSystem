@@ -1,0 +1,201 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Services_style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ComboBundle_style.css" asp-append-version="true" />
+}
+
+<main class="container" role="main" id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero" aria-label="LeRay hero banner">
+        <img src="~/Images/LerayImages/BackgroundLeray.PNG" alt="LeRay Aesthetic and Wellness Center Background">
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="hero-carousel">
+        <div class="carousel-slide bg-service1 active"></div>
+        <div class="carousel-slide bg-service2"></div>
+        <div class="carousel-slide bg-service3"></div>
+        <div class="carousel-slide bg-service4"></div>
+        <div class="carousel-slide bg-service5"></div>
+
+        <button class="carousel-control prev">&#10094;</button>
+        <button class="carousel-control next">&#10095;</button>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section container">
+        <h2 class="section-title">SERVICES</h2>
+        <div class="underline"></div>
+
+        <div class="services-grid">
+            <div class="service-card" onclick="window.location.href='/Home/Facial'">
+                <img src="~/Images/LerayServices/Facial.jpg" alt="Facial">
+                <p>FACIAL</p>
+            </div>
+
+            <div class="service-card" onclick="window.location.href='/Home/Slimming'">
+                <img src="~/Images/LerayServices/Slimming.jpg" alt="Slimming">
+                <p>SLIMMING</p>
+            </div>
+
+            <div class="service-card" onclick="window.location.href='/Home/SkinTreatment'">
+                <img src="~/Images/LerayServices/Skin-Treatment.jpg" alt="Skin Treatment">
+                <p>SKIN TREATMENT</p>
+            </div>
+
+            <div class="service-card" onclick="window.location.href='/Home/LaserHairRemoval'">
+                <img src="~/Images/LerayServices/LaseHairRemoval.jpg" alt="Laser Hair Removal">
+                <p>SHR/IPL LASER HAIR REMOVAL</p>
+            </div>
+
+            <div class="service-card" onclick="window.location.href='/Home/LaserTreatment'">
+                <img src="~/Images/LerayServices/Laser.jpg" alt="Laser Treatment">
+                <p>LASER TREATMENT</p>
+            </div>
+
+            <div class="service-card" onclick="window.location.href='/Home/Whitening'">
+                <img src="~/Images/LerayServices/Whitening.jpg" alt="Whitening">
+                <p>WHITENING / ANTI-AGING</p>
+            </div>
+        </div>
+
+        <div class="view-all-wrap">
+            <a href="/Home/ViewAllServices" class="view-all-btn">VIEW ALL TREATMENTS</a>
+        </div>
+    </section>
+
+    <!-- Combo Bundle Section -->
+    <section class="combo-section">
+        <h2 class="section-title">Combo Bundles</h2>
+        <div class="underline"></div>
+
+        <div class="bundle-container">
+            <!-- Microneedling Bundle -->
+            <div class="bundle-card">
+                <h3 class="bundle-title">MICRONEEDLING BUNDLE</h3>
+                <div class="bundle-image">
+                    <img src="~/Images/LerayImages/Bundle.jpg" alt="Microneedling Bundle">
+                </div>
+
+                <div class="combo">
+                    <div class="combo-header"><span>COMBO A</span><span class="price">₱1,899</span></div>
+                    <ul>
+                        <li>Deep Cleaning Facial</li>
+                        <li>Microneedle: Prem. Wrinkle Treatment</li>
+                        <li>PDT Light Treatment</li>
+                        <li>Gold Mask</li>
+                    </ul>
+                    <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+                </div>
+
+                <div class="combo">
+                    <div class="combo-header"><span>COMBO B</span><span class="price">₱1,899</span></div>
+                    <ul>
+                        <li>Deep Cleaning Facial</li>
+                        <li>Microneedle: Prem. Acne Treatment</li>
+                        <li>PDT Light Treatment</li>
+                        <li>Gold Mask</li>
+                    </ul>
+                    <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+                </div>
+            </div>
+
+            <!-- Laser Bundle -->
+            <div class="bundle-card">
+                <h3 class="bundle-title">LASER BUNDLE</h3>
+                <div class="bundle-image">
+                    <img src="~/Images/LerayImages/Bundle.jpg" alt="Laser Bundle">
+                </div>
+
+                <div class="combo">
+                    <div class="combo-header"><span>COMBO C</span><span class="price">₱1,899</span></div>
+                    <ul>
+                        <li>Deep Cleaning Facial</li>
+                        <li>Pico Laser (Any Body Parts)</li>
+                        <li>PDT Light Treatment</li>
+                    </ul>
+                    <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+                </div>
+
+                <div class="combo">
+                    <div class="combo-header"><span>COMBO D</span><span class="price">₱1,899</span></div>
+                    <ul>
+                        <li>Deep Cleaning Facial</li>
+                        <li>Carbon Laser (Any Body Parts)</li>
+                        <li>PDT Light Treatment</li>
+                    </ul>
+                    <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+                </div>
+            </div>
+
+            <!-- Beauty Bundle -->
+            <div class="bundle-card">
+                <h3 class="bundle-title">BEAUTY BUNDLE</h3>
+                <div class="bundle-image">
+                    <img src="~/Images/LerayImages/Bundle.jpg" alt="Beauty Bundle">
+                </div>
+
+                <div class="combo">
+                    <div class="combo-header"><span>COMBO E</span><span class="price">₱1,899</span></div>
+                    <ul>
+                        <li>Deep Cleaning Facial</li>
+                        <li>Microneedling: Le’Ray Micro-Whitening</li>
+                        <li>PDT Light Treatment</li>
+                    </ul>
+                    <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+                </div>
+
+                <div class="combo">
+                    <div class="combo-header"><span>COMBO F</span><span class="price">₱1,899</span></div>
+                    <ul>
+                        <li>Deep Cleaning Facial</li>
+                        <li>Microneedling: Le’Ray Micro-Acne</li>
+                        <li>PDT Light Treatment</li>
+                    </ul>
+                    <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+        <div class="testimonial-container">
+            <button class="arrow" id="prevBtn">‹</button>
+
+            <div class="testimonial-box">
+                <h3>Client’s name</h3>
+                <p class="quote">
+                    "I have always had a wonderful experience. The receptionists at Le’Ray are warm and welcoming,
+                    and the professionals are incredibly knowledgeable when it comes to skincare and wellness.
+                    They offer helpful advice tailored to my needs. I’ve recommended Le’Ray to friends, and they’ve all had 
+                    the same amazing experience. Great job, Le’Ray Aesthetic and Wellness Center!"
+                </p>
+                <div class="stars">★★★★★</div>
+            </div>
+
+            <button class="arrow" id="nextBtn">›</button>
+        </div>
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <div class="contact-button">
+            <button class="contact-btn" onclick="window.location.href='/Home/ContactUs'">CONTACT US</button>
+        </div>
+    </section>
+
+</main>
+
+@section Scripts {
+    <script src="~/js/Services_script.js" asp-append-version="true"></script>
+    <script src="~/js/ComboBundle.js" asp-append-version="true"></script>
+}

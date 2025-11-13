@@ -1,0 +1,47 @@
+@model IEnumerable<New_LeRayBookingSystem.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Appointments";
+}
+
+<h1>Appointments</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().User)</th>
+            <th>@Html.DisplayNameFor(model => model.First().AppointmentDate)</th>
+            <th>@Html.DisplayNameFor(model => model.First().ServiceName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Status)</th>
+            <th>@Html.DisplayNameFor(model => model.First().PaymentStatus)</th>
+            <th>@Html.DisplayNameFor(model => model.First().PaymentMethod)</th>
+            <th>@Html.DisplayNameFor(model => model.First().CustomerService)</th>
+            <th>@Html.DisplayNameFor(model => model.First().CreatedAt)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(item.User?.FullName ?? "N/A")</td>
+                <td>@item.AppointmentDate.ToString("g")</td>
+                <td>@item.ServiceName</td>
+                <td>@item.Status</td>
+                <td>@item.PaymentStatus</td>
+                <td>@item.PaymentMethod</td>
+                <td>@(item.CustomerService?.Category ?? "N/A")</td>
+                <td>@item.CreatedAt.ToString("g")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

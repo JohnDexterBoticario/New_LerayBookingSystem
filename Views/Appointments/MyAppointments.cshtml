@@ -1,0 +1,79 @@
+﻿@model IEnumerable<New_LeRayBookingSystem.Models.Appointment>
+
+@{
+    ViewData["Title"] = "My Appointments";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Payment</th>
+            <th>Promo</th>
+            <th></th>
+        </tr>
+    </thead>
+        <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var appt in Model)
+            {
+                <tr>
+                    <!-- FIX: Display Notes content if it is the aggregate service -->
+                    <td>
+                        @{
+                            // Check if the stored service name is the placeholder
+                            if (appt.ServiceName == "SERVICE AGGREGATE" && !string.IsNullOrWhiteSpace(appt.Notes))
+                            {
+                                // Display the detailed list of selected services from Notes
+                                @appt.Notes
+                            }
+                            else
+                            {
+                                // Fallback to the regular Service Name or an unknown message
+                                @(appt.CustomerService?.ServiceName ?? appt.ServiceName ?? "Unknown")
+                            }
+                        }
+                    </td>
+
+                    <!-- Use AppointmentDate (not Date) and guard against default value -->
+                    <td>
+                        @(
+                                        appt.AppointmentDate != default(DateTime)
+                                        ? appt.AppointmentDate.ToString("MMM dd, yyyy hh:mm tt")
+                                        : "N/A"
+                                        )
+            </td>
+
+                    <td>@(string.IsNullOrWhiteSpace(appt.Status) ? "N/A" : appt.Status)</td>
+                    <td>@(string.IsNullOrWhiteSpace(appt.PaymentStatus) ? "N/A" : appt.PaymentStatus)</td>
+
+                    <!-- Promo may be null; prefer Promo.PromoCode or Appointment.PromoCode -->
+                    <td>@(appt.Promo?.PromoCode ?? appt.PromoCode ?? "None")</td>
+
+                    <!-- Actions: Details/Edit depending on role and ownership -->
+                    <td>
+                        <a asp-action="Details" asp-route-id="@appt.Id" class="btn btn-sm btn-outline-primary">Details</a>
+
+                        @* Show Edit only to admins (or you can allow clients to edit their own pending appointments) *@
+                @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@appt.Id" class="btn btn-sm btn-outline-secondary ms-2">Edit</a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">You don’t have any appointments yet.</td>
+            </tr>
+        }
+    </tbody>
+</table>

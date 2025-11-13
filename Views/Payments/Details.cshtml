@@ -1,0 +1,38 @@
+@model New_LeRayBookingSystem.Models.Payments
+
+@{
+    ViewData["Title"] = "Payment Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.User)</dt>
+        <dd class="col-sm-10">@Model.User?.FullName ?? "N/A"</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Description)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.Description)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Amount)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.Amount)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.PaymentDate)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.PaymentDate)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.PaymentMethod)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.PaymentMethod)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.Status)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.Status)</dd>
+
+        <dt class="col-sm-2">@Html.DisplayNameFor(m => m.ReceiptPath)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.ReceiptPath)</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

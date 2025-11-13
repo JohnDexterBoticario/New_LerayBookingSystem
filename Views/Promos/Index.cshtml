@@ -1,0 +1,62 @@
+﻿@model IEnumerable<New_LeRayBookingSystem.Models.Promos>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<New_LeRayBookingSystem.Models.ApplicationUser> SignInManager
+@inject UserManager<New_LeRayBookingSystem.Models.ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Promos";
+}
+
+<h2>Promos</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Promo</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Promo Code</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Is Active</th>
+            @* 👇 Show only if the logged-in user is an Admin *@
+            @if (User.IsInRole("Admin"))
+            {
+                <th>Created By</th>
+            }
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.Price.ToString("C")</td>
+                <td><strong>@item.PromoCode</strong></td>
+                <td>@item.StartDate.ToShortDateString()</td>
+                <td>@item.EndDate.ToShortDateString()</td>
+                <td>@(item.IsActive ? "Yes" : "No")</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>@item.CreatedByUser?.FullName ?? "Unknown"</td>
+                }
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

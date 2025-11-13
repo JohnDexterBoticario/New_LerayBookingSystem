@@ -1,0 +1,51 @@
+@model New_LeRayBookingSystem.Models.Appointment
+
+@{
+    ViewData["Title"] = "Appointment Details";
+}
+
+<h1>Appointment Details</h1>
+
+<div>
+    <h4>Appointment</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Client</dt>
+        <dd class="col-sm-9">@Model.User?.FullName ?? "N/A"</dd>
+
+        <dt class="col-sm-3">Appointment Date</dt>
+        <dd class="col-sm-9">@Model.AppointmentDate.ToString("f")</dd>
+
+        <dt class="col-sm-3">Service</dt>
+        <dd class="col-sm-9">@Model.ServiceName</dd>
+
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">@Model.Status</dd>
+
+        <dt class="col-sm-3">Payment Method</dt>
+        <dd class="col-sm-9">@Model.PaymentMethod</dd>
+
+        <dt class="col-sm-3">Payment Status</dt>
+        <dd class="col-sm-9">@Model.PaymentStatus</dd>
+
+        <dt class="col-sm-3">Promo Code</dt>
+        <dd class="col-sm-9">@Model.PromoCode ?? "None"</dd>
+
+        <dt class="col-sm-3">Notes</dt>
+        <dd class="col-sm-9">@Model.Notes ?? "None"</dd>
+
+        <dt class="col-sm-3">Category</dt>
+        <dd class="col-sm-9">@Model.CustomerService?.Category ?? "N/A"</dd>
+
+        <dt class="col-sm-3">Created By</dt>
+        <dd class="col-sm-9">@Model.CreatedByUser?.FullName ?? "System"</dd>
+
+        <dt class="col-sm-3">Created At</dt>
+        <dd class="col-sm-9">@Model.CreatedAt.ToString("g")</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

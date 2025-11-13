@@ -1,0 +1,43 @@
+@model IEnumerable<New_LeRayBookingSystem.Models.AuditLog>
+
+@{
+    ViewData["Title"] = "Audit Logs";
+}
+
+<h1>Audit Logs</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Action)</th>
+            <th>User</th>
+            <th>@Html.DisplayNameFor(model => model.First().Timestamp)</th>
+            <th>@Html.DisplayNameFor(model => model.First().EntityType)</th>
+            <th>@Html.DisplayNameFor(model => model.First().EntityId)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Details)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Action</td>
+                <td>@(item.User != null ? item.User.FullName : "N/A")</td>
+                <td>@item.Timestamp.ToString("g")</td>
+                <td>@item.EntityType</td>
+                <td>@item.EntityId</td>
+                <td>@item.Details</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

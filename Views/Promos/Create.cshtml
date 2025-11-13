@@ -1,0 +1,83 @@
+@model New_LeRayBookingSystem.Models.Promos
+
+@{
+    ViewData["Title"] = "Create Promo";
+}
+
+<h2>Create New Promo</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Title -->
+            <div class="form-group mb-3">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <!-- Price -->
+            <div class="form-group mb-3">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <!-- Promo Code -->
+            <div class="form-group mb-3">
+                <label asp-for="PromoCode" class="control-label fw-bold"></label>
+                <input asp-for="PromoCode"
+                       class="form-control text-uppercase bg-light"
+                       readonly
+                       value="@(Model?.PromoCode ?? $"LeRay-{Guid.NewGuid().ToString("N").Substring(0, 4).ToUpper()}")" />
+                <span class="form-text text-muted">Auto-generated promo code (cannot be changed).</span>
+                <span asp-validation-for="PromoCode" class="text-danger"></span>
+            </div>
+
+            <!-- Start Date -->
+            <div class="form-group mb-3">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" type="date" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+
+            <!-- End Date -->
+            <div class="form-group mb-3">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" type="date" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+
+            <!-- Is Active -->
+            <div class="form-group mb-3 form-check">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label"></label>
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Save Promo</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

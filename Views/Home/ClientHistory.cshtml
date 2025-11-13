@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Client History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/ClientHistory.css" asp-append-version="true" />
+}
+
+<div class="client-history-container">
+    <h2>Client History</h2>
+
+    <div class="search-wrapper">
+        <input type="text" id="searchInput" placeholder="Search by name, email, or service..." />
+    </div>
+
+    <table id="historyTable" class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Client Name</th>
+                <th>Email</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JS will populate rows dynamically -->
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <button id="prevBtn" class="btn btn-primary">Previous</button>
+        <span id="pageInfo"></span>
+        <button id="nextBtn" class="btn btn-primary">Next</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/ClientHistory.js" asp-append-version="true"></script>
+}

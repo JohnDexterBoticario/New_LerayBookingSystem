@@ -1,0 +1,44 @@
+.client-history-container {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+.client-history-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-wrapper {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+#searchInput {
+    padding: 8px 12px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+table#historyTable th {
+    background-color: #f8f9fa;
+}
+
+table#historyTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.pagination span {
+    font-weight: bold;
+}

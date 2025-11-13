@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Le'Ray — Aesthetic and Wellness Center</title>
+
+  <!-- ====== External Libraries ====== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+  <!-- ====== Custom Styles ====== -->
+  <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/CreateAccount_style.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+  @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container topbar">
+      <!-- Brand -->
+      <div class="brand" aria-label="LeRay brand">
+        <div class="logo" aria-hidden="true">LE'RAY</div>
+        <div class="brand-text">
+          <h1 class="site-title">Le'Ray</h1>
+          <p class="site-tag">Aesthetic &amp; Wellness</p>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a class="nav-link active" href="/Home/Index">HOME</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">SERVICES</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="servicesDropdown">
+              <li><a class="dropdown-item" href="/Home/Facial">Facial</a></li>
+              <li><a class="dropdown-item" href="/Home/LaserTreatment">Laser Treatment</a></li>
+              <li><a class="dropdown-item" href="/Home/SkinTreatment">Skin Treatment</a></li>
+              <li><a class="dropdown-item" href="/Home/Spa">Spa</a></li>
+              <li><a class="dropdown-item" href="/Home/Slimming">Slimming</a></li>
+              <li><a class="dropdown-item" href="/Home/LaserHairRemoval">Laser Hair Removal</a></li>
+              <li><a class="dropdown-item" href="/Home/Eyelash">Eyelash</a></li>
+              <li><a class="dropdown-item" href="/Home/MicroNeedling">Microneedling</a></li>
+              <li><a class="dropdown-item" href="/Home/NailCare">Nail Care</a></li>
+              <li><a class="dropdown-item" href="/Home/SemiPermanentMakeup">Semi-Permanent Makeup</a></li>
+              <li><a class="dropdown-item" href="/Home/Whitening">Whitening</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/Home/About">ABOUT</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Home/ContactUs">CONTACT US</a></li>
+        </ul>
+      </nav>
+
+      <!-- Utilities (Social + Account + Booking) -->
+      <div class="utils">
+        <!-- Social Links -->
+        <a href="https://www.facebook.com/login" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <button type="button" class="icon-btn facebook"><i class="fab fa-facebook-f"></i></button>
+        </a>
+        <a href="https://www.instagram.com/accounts/login/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <button type="button" class="icon-btn instagram"><i class="fab fa-instagram"></i></button>
+        </a>
+
+        <!-- Account Sidebar -->
+        <button id="openSidebar" class="icon-btn" title="Account">
+          <i class="fa fa-user"></i>
+        </button>
+
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+        <div id="sidebar" class="sidebar">
+          <button id="closeSidebar" class="close-btn">&times;</button>
+
+          <div class="profile-section">
+            <img src="~/images/default-profile.png" alt="Profile" class="profile-pic" />
+            <h3 class="user-name">NAME</h3>
+            <a href="#" class="edit-profile-link">Edit Profile</a>
+          </div>
+
+          <ul class="sidebar-menu">
+            <li><a asp-controller="Home" asp-action="ClientHistory">Client History</a></li>
+            <li><a href="#">Reschedule</a></li>
+            <li><a href="#">Loyalty Progress</a></li>
+          </ul>
+
+          <div class="logout-section">
+            <button id="logoutBtn" class="logout-btn">
+              <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+          </div>
+        </div>
+
+        <!-- Book Now Button -->
+        <button id="bookNowBtn" class="book-btn" type="button">BOOK NOW</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SIGNUP MODAL ===== -->
+  <div id="signupModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <div class="modal-content">
+      <span class="close" title="Close">&times;</span>
+      <h2 id="signupTitle">Create a new account</h2>
+      <form id="signupForm">
+        <div class="form-group">
+          <input id="firstName" type="text" placeholder="First name" required />
+          <input id="lastName" type="text" placeholder="Last name" required />
+        </div>
+
+        <input id="signupEmail" type="email" placeholder="Email" required />
+
+        <div class="password-container">
+          <input type="password" id="password" placeholder="Password" required />
+          <span class="toggle-password" onclick="togglePassword('password', this)">
+            <i class="fa-solid fa-eye"></i>
+          </span>
+        </div>
+
+        <div class="password-container">
+          <input type="password" id="confirmPassword" placeholder="Confirm password" required />
+          <span class="toggle-password" onclick="togglePassword('confirmPassword', this)">
+            <i class="fa-solid fa-eye"></i>
+          </span>
+        </div>
+
+        <!-- ✅ Terms & Privacy Trigger -->
+        <div class="terms mt-2">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="agreeTerms" />
+    <label class="form-check-label" for="agreeTerms">
+      I have read and agree to the
+      <a href="/Home/TermsAndPrivacy" class="terms-link">Terms and Privacy Policy</a>.
+    </label>
+  </div>
+</div>
+
+
+        <button type="submit" class="signup-btn">Sign Up</button>
+        <p class="login-link">Already have an account? <a href="#" id="openLogin">Log In</a></p>
+      </form>
+    </div>
+  </div>
+<!-- ===== LOGIN MODAL ===== -->
+<div id="loginModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+  <div class="modal-content login-box">
+    <span class="close-login" title="Close">&times;</span>
+    <h2 id="loginTitle">Welcome Back!</h2>
+
+    <form id="loginForm">
+      <label for="login-username">UserName/Email</label>
+      <input id="login-username" type="text" placeholder="Enter your account" required />
+
+      <div class="password-container">
+        <input id="login-password" type="password" placeholder="Enter your password" required />
+        <span class="toggle-password" onclick="togglePassword('login-password', this)">
+          <i class="fa-solid fa-eye"></i>
+        </span>
+      </div>
+
+      <div class="text-end mb-3">
+        <a href="/Account/ForgotPassword" class="forgot-password-link">Forgot password?</a>
+      </div>
+
+      <!-- ✅ Remember Me Section -->
+      <div class="remember-me">
+        <input type="checkbox" id="rememberMe" />
+        <label for="rememberMe">Remember Me</label>
+      </div>
+
+      <button type="submit" class="btn">Log In</button>
+
+      <div class="divider"><span>or continue with</span></div>
+
+      <div class="social-login">
+        <button type="button" class="social-btn google">
+          <i class="fa-brands fa-google"></i><span>Continue with Google</span>
+        </button>
+        <button type="button" class="social-btn facebook">
+          <i class="fa-brands fa-facebook-f"></i><span>Continue with Facebook</span>
+        </button>
+        <button type="button" class="social-btn instagram">
+          <i class="fa-brands fa-instagram"></i><span>Continue with Instagram</span>
+        </button>
+      </div>
+
+      <p class="switch-text mt-3">
+        Don't have an account? <a href="#" id="openSignup">Sign up</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main role="main" class="pb-3 container">
+    @RenderBody()
+  </main>
+
+  <!-- ===== TERMS & PRIVACY MODAL ===== -->
+  <div class="modal fade" id="termsPrivacyModal" tabindex="-1" aria-labelledby="termsPrivacyLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content rounded-4 shadow-lg">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold text-secondary" id="termsPrivacyLabel">Terms and Privacy Policy</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="termsPrivacyContent">
+          <p class="text-muted">Loading Terms & Privacy Policy...</p>
+        </div>
+        <div class="modal-footer bg-light">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="~/Images/LerayImages/BackgroundLeray.PNG" alt="LeRay Logo" />
+        <p>
+          At Le’Ray Aesthetic we believe in the transformative power of self-care
+          and the harmonious integration of aesthetics. Our center is a sanctuary dedicated
+          to supporting you to be your most radiant self.
+        </p>
+      </div>
+
+      <div class="footer-nav">
+        <h4>NAVIGATION</h4>
+        <p><a href="/Home/ViewAllServices">SERVICES</a></p>
+        <p><a href="/Home/About">ABOUT</a></p>
+        <p><a href="/Home/ContactUs">CONTACT US</a></p>
+      </div>
+
+      <div class="footer-branch">
+        <h4>BRANCH</h4>
+        <p>
+          Le’Ray Aesthetic and Wellness Center is located at 939 J.P. Rizal Street,
+          Concepcion Uno, Marikina City. Visit us on the 2nd floor of Gendaiya’s Place.
+        </p>
+      </div>
+
+      <div class="footer-contact">
+        <h4>CONTACT</h4>
+        <p>lerayaestheticandwellness@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 <strong>Le'Ray Aesthetic and Wellness Center</strong> — All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/script.js" asp-append-version="true"></script>
+  <script src="~/js/Services_script.js" asp-append-version="true"></script>
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  <script src="~/js/LogIn_script.js" asp-append-version="true"></script>
+  <script src="~/js/TermsAndPrivacy.js" asp-append-version="true"></script>
+  
+
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

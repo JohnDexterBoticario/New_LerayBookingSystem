@@ -1,0 +1,42 @@
+@model IEnumerable<New_LeRayBookingSystem.Models.Service>
+
+@{
+    ViewData["Title"] = "Services";
+}
+
+<h2>Services</h2>
+@if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Create New Service</a>
+    </p>
+}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Service Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Duration</th>
+            <th>Is Active</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model ?? Enumerable.Empty<New_LeRayBookingSystem.Models.Service>())
+        {
+            <tr>
+                <td>@item?.ServiceName ?? "N/A"</td>
+                <td>@item?.Category ?? "N/A"</td>
+                <td>@item?.Price.ToString("C")</td>
+                <td>@item?.Duration</td>
+                <td>@(item?.IsActive == true ? "Yes" : "No")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item?.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item?.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item?.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

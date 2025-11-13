@@ -1,0 +1,41 @@
+@* FIX 1: Removed model binding as this page is for display, not form submission. *@
+@* @model LeRayBookingSystem.Models.CreateBookingDto *@
+
+@{
+    ViewData["Title"] = "Spa Services";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/facial_style.css" asp-append-version="true" />
+}
+    <h2 class="title">SPA SERVICES</h2>
+
+    <div class="facial-grid">
+        <div class="facial-card">
+            <img src="~/Images/SPAServices/FootSpa.jpg" alt="FOOT SPA" class="facial-img">
+            <span class="price">₱899 / Session</span>
+            <h3>FOOT SPA</h3> 
+            <p>A refreshing cleanse that revives your skin with essential care—perfect for a quick glow-up and maintenance.</p>
+            <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+        </div>
+
+        <div class="facial-card">
+            @* FIX 2: Corrected line break in the image alt attribute to prevent potential HTML breakage *@
+            <img src="~/Images/SPAServices/FootSpa with pedi.jpg" alt="FOOT SPA WITH PEDICURE" class="facial-img">
+            <span class="price">₱999 / Session</span>
+            <h3>FOOT SPA WITH PEDICURE</h3> 
+            <p>Targets breakouts and clears impurities with deep cleansing and anti-inflammatory treatments for calmer skin.</p>
+            <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+        </div>
+
+        <div class="facial-card">
+            <img src="~/Images/SPAServices/ManiAndPedi.jpg" alt="MANI & PEDI AND FOOT SPA" class="facial-img">
+            <span class="price">₱2,499 / Session</span>
+            <h3>MANI & PEDI AND FOOT SPA</h3>
+            <p>A luxurious multi-step facial combining premium techniques for ultimate rejuvenation.</p>
+            <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+        </div>
+    </div>
+@section Scripts {
+    <script src="~/js/Services_script.js" asp-append-version="true"></script>
+}

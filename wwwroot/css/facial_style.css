@@ -1,0 +1,159 @@
+/* ===== Global Styles ===== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f7f4f1;
+  color: #4a3f35;
+  line-height: 1.6;
+}
+
+/* ===== Page Title ===== */
+.title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin: 60px 0 30px;
+  color: #6e4e2e;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #8a6b49;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* ===== Grid Layout ===== */
+.facial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  padding: 0 20px;
+}
+
+/* ===== Card Design ===== */
+.facial-card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.facial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.facial-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* ===== Price & Text ===== */
+.price {
+  display: block;
+  font-weight: 700;
+  color: #8a6b49;
+  margin-top: 5px;
+  font-size: 1.15rem;
+}
+
+.facial-card h3 {
+  margin: 10px 0 6px;
+  color: #4a3f35;
+  font-size: 1.05rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.facial-card p {
+  font-size: 0.9rem;
+  color: #6b5a4a;
+  flex-grow: 1;
+  min-height: 65px;
+  margin-bottom: 16px;
+}
+
+/* ===== Book Now Button ===== */
+.book-btn {
+  background-color: #8a6b49;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+  background-color: #a8825b;
+  transform: scale(1.05);
+}
+
+/* ===== Hover Accent Line ===== */
+.facial-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #8a6b49, #bfa06f);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.facial-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+  .facial-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .facial-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 1.9rem;
+  }
+
+  .facial-card {
+    padding: 18px;
+  }
+
+  .facial-img {
+    height: 160px;
+  }
+}

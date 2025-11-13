@@ -1,0 +1,38 @@
+@model IEnumerable<New_LeRayBookingSystem.ViewModels.ApplicationUserViewModel>
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h2>User List</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New User</a>
+</p>
+
+<table class="table table-bordered table-striped align-middle">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Occupation</th>
+            <th>Date Joined</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FullName</td>
+                <td>@user.DateJoined.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@user.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@user.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

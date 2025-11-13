@@ -1,0 +1,43 @@
+﻿@model New_LeRayBookingSystem.Models.Promos
+
+@{
+    ViewData["Title"] = "Promo Details";
+}
+
+<h2>Promo Details</h2>
+
+<div>
+    <h4>@Model.Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Promo Code</dt>
+        <dd class="col-sm-9"><strong>@Model.PromoCode</strong></dd> <!-- ✅ Added -->
+
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+
+        <dt class="col-sm-3">Price</dt>
+        <dd class="col-sm-9">@Model.Price</dd>
+
+        <dt class="col-sm-3">Start Date</dt>
+        <dd class="col-sm-9">@Model.StartDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">End Date</dt>
+        <dd class="col-sm-9">@Model.EndDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Active</dt>
+        <dd class="col-sm-9">@Model.IsActive</dd>
+
+        <dt class="col-sm-3">Created At</dt>
+        <dd class="col-sm-9">@Model.CreatedAt</dd>
+    </dl>
+</div>
+@if (User.IsInRole("Admin"))
+{
+    <dt class="col-sm-2">Created By</dt>
+    <dd class="col-sm-10">@Model.CreatedByUser?.FullName ?? "Unknown"</dd>
+}
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

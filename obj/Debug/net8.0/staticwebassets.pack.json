@@ -1,0 +1,733 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\New_LerayBookingSystem.bundle.scp.css",
+      "PackagePath": "staticwebassets\\New_LerayBookingSystem.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\ContactUs.png",
+      "PackagePath": "staticwebassets\\Images\\ContactUs.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\EyelashServices\\BabyDoll.jpg",
+      "PackagePath": "staticwebassets\\Images\\EyelashServices\\BabyDoll.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\EyelashServices\\CatEyeLook.jpg",
+      "PackagePath": "staticwebassets\\Images\\EyelashServices\\CatEyeLook.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\EyelashServices\\ClassicLook.jpg",
+      "PackagePath": "staticwebassets\\Images\\EyelashServices\\ClassicLook.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\EyelashServices\\NaturalLook.jpg",
+      "PackagePath": "staticwebassets\\Images\\EyelashServices\\NaturalLook.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\EyelashServices\\OpenEyeLook.jpg",
+      "PackagePath": "staticwebassets\\Images\\EyelashServices\\OpenEyeLook.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\EyelashServices\\Removal.jpg",
+      "PackagePath": "staticwebassets\\Images\\EyelashServices\\Removal.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\FacialServices\\Acne Facial.jpg",
+      "PackagePath": "staticwebassets\\Images\\FacialServices\\Acne Facial.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\FacialServices\\AcneShot.jpg",
+      "PackagePath": "staticwebassets\\Images\\FacialServices\\AcneShot.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\FacialServices\\Basic Facial.jpg",
+      "PackagePath": "staticwebassets\\Images\\FacialServices\\Basic Facial.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\FacialServices\\Diamond.jpg",
+      "PackagePath": "staticwebassets\\Images\\FacialServices\\Diamond.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\FacialServices\\GoldMask.jpg",
+      "PackagePath": "staticwebassets\\Images\\FacialServices\\GoldMask.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\FacialServices\\PDTLight.jpg",
+      "PackagePath": "staticwebassets\\Images\\FacialServices\\PDTLight.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\FacialServices\\hydra.jpg",
+      "PackagePath": "staticwebassets\\Images\\FacialServices\\hydra.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\BikiniArea.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\BikiniArea.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\Face.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\Face.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\FullArms.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\FullArms.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\FullLegs.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\FullLegs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\LowerArms.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\LowerArms.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\LowerLeg.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\LowerLeg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\LowerLip.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\LowerLip.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\UnderArm.png",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\UnderArm.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserHairRemovalServices\\UpperLip.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserHairRemovalServices\\UpperLip.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserTreatmentServices\\CarbonLaser.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserTreatmentServices\\CarbonLaser.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserTreatmentServices\\MelasmaRemoval.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserTreatmentServices\\MelasmaRemoval.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserTreatmentServices\\PicoLaser.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserTreatmentServices\\PicoLaser.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LaserTreatmentServices\\TattooRemoval.jpg",
+      "PackagePath": "staticwebassets\\Images\\LaserTreatmentServices\\TattooRemoval.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\BackgroundLeray.PNG",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\BackgroundLeray.PNG"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Bundle.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Bundle.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Leray.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Leray.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\LerayBackground.png",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\LerayBackground.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Logo.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Logo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Pricelist.png",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Pricelist.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Service1.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Service1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Services2.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Services2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Services3.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Services3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Services4.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Services4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayImages\\Services5.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayImages\\Services5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\Facial.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\Facial.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\IPL.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\IPL.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\LaseHairRemoval.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\LaseHairRemoval.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\Laser.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\Laser.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\LowerArms.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\LowerArms.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\Microneedling.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\Microneedling.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\Nail.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\Nail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\SPA.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\SPA.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\Semi.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\Semi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\Skin-Treatment.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\Skin-Treatment.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\Slimming.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\Slimming.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\LerayServices\\Whitening.jpg",
+      "PackagePath": "staticwebassets\\Images\\LerayServices\\Whitening.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\MicroNeedlingServices\\MicroAcne.jpg",
+      "PackagePath": "staticwebassets\\Images\\MicroNeedlingServices\\MicroAcne.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\MicroNeedlingServices\\MicroBright.jpg",
+      "PackagePath": "staticwebassets\\Images\\MicroNeedlingServices\\MicroBright.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\MicroNeedlingServices\\MicroMoisture.jpg",
+      "PackagePath": "staticwebassets\\Images\\MicroNeedlingServices\\MicroMoisture.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\MicroNeedlingServices\\MicroRegenerate.jpg",
+      "PackagePath": "staticwebassets\\Images\\MicroNeedlingServices\\MicroRegenerate.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\MicroNeedlingServices\\MicroWhitening.jpg",
+      "PackagePath": "staticwebassets\\Images\\MicroNeedlingServices\\MicroWhitening.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SPAServices\\FootSpa.jpg",
+      "PackagePath": "staticwebassets\\Images\\SPAServices\\FootSpa.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SPAServices\\Footspa with pedi.jpg",
+      "PackagePath": "staticwebassets\\Images\\SPAServices\\Footspa with pedi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SPAServices\\ManiAndPedi.jpg",
+      "PackagePath": "staticwebassets\\Images\\SPAServices\\ManiAndPedi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SemiPermanentMakeupServices\\BB GLow Face and neck.png",
+      "PackagePath": "staticwebassets\\Images\\SemiPermanentMakeupServices\\BB GLow Face and neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SemiPermanentMakeupServices\\BB Glow(FACE).jpg",
+      "PackagePath": "staticwebassets\\Images\\SemiPermanentMakeupServices\\BB Glow(FACE).jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SemiPermanentMakeupServices\\BB Lips.png",
+      "PackagePath": "staticwebassets\\Images\\SemiPermanentMakeupServices\\BB Lips.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SemiPermanentMakeupServices\\BB blush.png",
+      "PackagePath": "staticwebassets\\Images\\SemiPermanentMakeupServices\\BB blush.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SemiPermanentMakeupServices\\FACE,Neck,blush.png",
+      "PackagePath": "staticwebassets\\Images\\SemiPermanentMakeupServices\\FACE,Neck,blush.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SemiPermanentMakeupServices\\Face and neck.png",
+      "PackagePath": "staticwebassets\\Images\\SemiPermanentMakeupServices\\Face and neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SemiPermanentMakeupServices\\Full package.png",
+      "PackagePath": "staticwebassets\\Images\\SemiPermanentMakeupServices\\Full package.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SemiPermanentMakeupServices\\Neck.png",
+      "PackagePath": "staticwebassets\\Images\\SemiPermanentMakeupServices\\Neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SkinTreatmentServices\\Milia.jpg",
+      "PackagePath": "staticwebassets\\Images\\SkinTreatmentServices\\Milia.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SkinTreatmentServices\\SkinTag.jpg",
+      "PackagePath": "staticwebassets\\Images\\SkinTreatmentServices\\SkinTag.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SkinTreatmentServices\\Syringoma.jpg",
+      "PackagePath": "staticwebassets\\Images\\SkinTreatmentServices\\Syringoma.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SkinTreatmentServices\\WartsRemoval.jpg",
+      "PackagePath": "staticwebassets\\Images\\SkinTreatmentServices\\WartsRemoval.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SlimmingServices\\BarbieArms.jpg",
+      "PackagePath": "staticwebassets\\Images\\SlimmingServices\\BarbieArms.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SlimmingServices\\LIPO.jpg",
+      "PackagePath": "staticwebassets\\Images\\SlimmingServices\\LIPO.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SlimmingServices\\Mesotherapy.jpg",
+      "PackagePath": "staticwebassets\\Images\\SlimmingServices\\Mesotherapy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SlimmingServices\\RF ARMS and THIGHS.jpg",
+      "PackagePath": "staticwebassets\\Images\\SlimmingServices\\RF ARMS and THIGHS.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SlimmingServices\\RF Contouring.jpg",
+      "PackagePath": "staticwebassets\\Images\\SlimmingServices\\RF Contouring.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\Images\\SlimmingServices\\RF TUMMY.jpg",
+      "PackagePath": "staticwebassets\\Images\\SlimmingServices\\RF TUMMY.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\Booking.css",
+      "PackagePath": "staticwebassets\\css\\Booking.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\ClientHistory.css",
+      "PackagePath": "staticwebassets\\css\\ClientHistory.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\ComboBundle_style.css",
+      "PackagePath": "staticwebassets\\css\\ComboBundle_style.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\ContactUs_style.css",
+      "PackagePath": "staticwebassets\\css\\ContactUs_style.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\CreateAccount_style.css",
+      "PackagePath": "staticwebassets\\css\\CreateAccount_style.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\Services_style.css",
+      "PackagePath": "staticwebassets\\css\\Services_style.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\about_style.css",
+      "PackagePath": "staticwebassets\\css\\about_style.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\facial_style.css",
+      "PackagePath": "staticwebassets\\css\\facial_style.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\Auth.js",
+      "PackagePath": "staticwebassets\\js\\Auth.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\Booking.js",
+      "PackagePath": "staticwebassets\\js\\Booking.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\Booking2.js",
+      "PackagePath": "staticwebassets\\js\\Booking2.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\ClientHistory.js",
+      "PackagePath": "staticwebassets\\js\\ClientHistory.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\ComboBundle.js",
+      "PackagePath": "staticwebassets\\js\\ComboBundle.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\ContactUs_script.js",
+      "PackagePath": "staticwebassets\\js\\ContactUs_script.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\Dashboard.js",
+      "PackagePath": "staticwebassets\\js\\Dashboard.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\LogIn_script.js",
+      "PackagePath": "staticwebassets\\js\\LogIn_script.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\Services_script.js",
+      "PackagePath": "staticwebassets\\js\\Services_script.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\TermsAndPrivacy.js",
+      "PackagePath": "staticwebassets\\js\\TermsAndPrivacy.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\about_script.js",
+      "PackagePath": "staticwebassets\\js\\about_script.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-theme.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\009c10c5-a1b7-4d44-8640-82bdf40a0c03_Neck.png",
+      "PackagePath": "staticwebassets\\receipts\\009c10c5-a1b7-4d44-8640-82bdf40a0c03_Neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\00da7c94-4a01-4ce8-8548-f71518c1e003_FACE,Neck,blush.png",
+      "PackagePath": "staticwebassets\\receipts\\00da7c94-4a01-4ce8-8548-f71518c1e003_FACE,Neck,blush.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\1b7034ac-397e-4920-8834-20126a586850_Neck.png",
+      "PackagePath": "staticwebassets\\receipts\\1b7034ac-397e-4920-8834-20126a586850_Neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\27a5ee8f-9303-403f-9281-3d1f06aaa4de_4.PNG",
+      "PackagePath": "staticwebassets\\receipts\\27a5ee8f-9303-403f-9281-3d1f06aaa4de_4.PNG"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\58d2bc20-86a5-479e-a10f-bd2efee5a4a8_Full package.png",
+      "PackagePath": "staticwebassets\\receipts\\58d2bc20-86a5-479e-a10f-bd2efee5a4a8_Full package.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\95a1f0bb-707e-433f-a0c4-e4bd2455fb1f_Neck.png",
+      "PackagePath": "staticwebassets\\receipts\\95a1f0bb-707e-433f-a0c4-e4bd2455fb1f_Neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\98b117eb-66db-40ef-9335-eac99b35ed88_GlutaSingle Dose.png",
+      "PackagePath": "staticwebassets\\receipts\\98b117eb-66db-40ef-9335-eac99b35ed88_GlutaSingle Dose.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\ad572c6d-d4c4-4934-9587-101e9dc903e7_BB GLow Face and neck.png",
+      "PackagePath": "staticwebassets\\receipts\\ad572c6d-d4c4-4934-9587-101e9dc903e7_BB GLow Face and neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\b2ed7c13-5f92-4454-80ba-ded71b09f9ee_Neck.png",
+      "PackagePath": "staticwebassets\\receipts\\b2ed7c13-5f92-4454-80ba-ded71b09f9ee_Neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\b6e3b35f-ce22-47e6-aea9-9d1c35057ba9_GlutaSingle Dose.png",
+      "PackagePath": "staticwebassets\\receipts\\b6e3b35f-ce22-47e6-aea9-9d1c35057ba9_GlutaSingle Dose.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\d1592291-9cf0-475a-8e4e-29e9f69e358f_BB blush.png",
+      "PackagePath": "staticwebassets\\receipts\\d1592291-9cf0-475a-8e4e-29e9f69e358f_BB blush.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\d6535385-0725-4d9e-ba89-b25ea57e5499_Neck.png",
+      "PackagePath": "staticwebassets\\receipts\\d6535385-0725-4d9e-ba89-b25ea57e5499_Neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\de14484c-d8de-469b-a80c-f8a161e425c5_Full package.png",
+      "PackagePath": "staticwebassets\\receipts\\de14484c-d8de-469b-a80c-f8a161e425c5_Full package.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\e12f6923-36a0-4af6-931a-b9e5aaa946b7_GlutaSingle Dose.png",
+      "PackagePath": "staticwebassets\\receipts\\e12f6923-36a0-4af6-931a-b9e5aaa946b7_GlutaSingle Dose.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\e3a03767-ef3d-4773-868b-22c110e52920_Full package.png",
+      "PackagePath": "staticwebassets\\receipts\\e3a03767-ef3d-4773-868b-22c110e52920_Full package.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.New_LerayBookingSystem.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.New_LerayBookingSystem.props",
+      "PackagePath": "build\\New_LerayBookingSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.New_LerayBookingSystem.props",
+      "PackagePath": "buildMultiTargeting\\New_LerayBookingSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.New_LerayBookingSystem.props",
+      "PackagePath": "buildTransitive\\New_LerayBookingSystem.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

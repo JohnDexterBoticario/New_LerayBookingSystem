@@ -1,0 +1,45 @@
+@model IEnumerable<New_LeRayBookingSystem.Models.Payments>
+
+@{
+    ViewData["Title"] = "Payments";
+}
+
+<h1>Payments</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.User)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Amount)</th>
+            <th>@Html.DisplayNameFor(model => model.PaymentDate)</th>
+            <th>@Html.DisplayNameFor(model => model.PaymentMethod)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+            <th>@Html.DisplayNameFor(model => model.ReceiptPath)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(item.User?.FullName ?? "N/A")</td>
+                <td>@Html.DisplayFor(_ => item.Description)</td>
+                <td>@Html.DisplayFor(_ => item.Amount)</td>
+                <td>@Html.DisplayFor(_ => item.PaymentDate)</td>
+                <td>@Html.DisplayFor(_ => item.PaymentMethod)</td>
+                <td>@Html.DisplayFor(_ => item.Status)</td>
+                <td>@Html.DisplayFor(_ => item.ReceiptPath)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

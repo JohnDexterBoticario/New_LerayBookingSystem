@@ -1,0 +1,86 @@
+@{
+    ViewData["Title"] = "About Us";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/about_style.css" asp-append-version="true" />
+}
+<section class="about-section">
+    <div class="about-container">
+      <div class="about-image">
+       
+ <img src="~/Images/LerayImages/Logo.jpg" alt="Le'Ray Aesthetic & Wellness Center" />
+      </div>
+
+      <div class="about-content">
+        <h2>About Le'Ray Aesthetic & Wellness Center</h2>
+        <p>
+    
+       At Le'Ray Aesthetic & Wellness Center, we help clients feel confident and radiant
+          in their natural beauty.
+ Our wide range of facial, slimming, and laser treatments
+          are performed by skilled professionals in a serene, elegant environment.
+ </p>
+
+        <p>
+          Our mission is to deliver personalized, high-quality aesthetic care that
+          enhances your natural glow while ensuring comfort and satisfaction.
+ </p>
+
+        <p>
+          Because at Le’Ray, self-care isn’t a luxury — it’s a vital step toward confidence,
+          balance, and wellness.
+ Visit us and experience rejuvenation that truly goes beyond the surface.
+ </p>
+
+        <button id="learnMoreBtn">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <p class="faq-intro">
+      Have questions?
+ We’re here to help. Explore our FAQs below for quick answers.
+ </p>
+
+    <div class="faq-container">
+      <div class="faq-item active">
+        <h3 class="faq-question">How can I book an appointment?</h3>
+        <p class="faq-answer">
+          Simply create an account, explore our services, and click “Book Now.”
+ Choose your preferred treatment, date, and time — then confirm with your payment.
+ </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">What if I’m late to my appointment?</h3>
+        <p class="faq-answer">
+          Please contact us as soon as possible.
+ Late arrivals may shorten your session
+          to avoid overlapping with the next client’s appointment.
+ </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Is there a rescheduling fee?</h3>
+        <p class="faq-answer">
+          Rescheduling less than 24 hours before your appointment may include a small fee.
+ Contact our staff to assist you with any changes.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Do you accept walk-ins?</h3>
+        <p class="faq-answer">
+          Yes, walk-ins are accepted based on availability.
+ However, we recommend booking in
+          advance to secure your desired schedule.
+ </p>
+      </div>
+    </div>
+  </section>
+  @section Scripts {
+    <script src="~/js/about_script.js" asp-append-version="true"></script>
+}

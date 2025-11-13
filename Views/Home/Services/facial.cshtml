@@ -1,0 +1,81 @@
+@{
+    ViewData["Title"] = "Facial Services";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/facial_style.css" asp-append-version="true" />
+}
+
+<h2 class="title">FACIAL SERVICES</h2>
+
+<div class="facial-grid">
+
+    <div class="facial-card">
+        <img src="~/Images/FacialServices/Basic Facial.jpg" alt="Basic Facial" class="facial-img">
+        <span class="price">₱899 / Session</span>
+        <h3>BASIC FACIAL</h3>
+        <p>A refreshing cleanse that revives your skin with essential care—perfect for a quick glow-up and maintenance.</p>
+        <a href="/Home/Booking?service=Basic%20Facial&price=899" class="book-btn">BOOK NOW</a>
+    </div>
+
+    <div class="facial-card">
+        <img src="~/Images/FacialServices/Acne Facial.jpg" alt="Acne Facial" class="facial-img">
+        <span class="price">₱999 / Session</span>
+        <h3>ACNE FACIAL</h3>
+        <p>Targets breakouts and clears impurities with deep cleansing and anti-inflammatory treatments for calmer skin.</p>
+        <a href="/Home/Booking?service=Acne%20Facial&price=999" class="book-btn">BOOK NOW</a>
+    </div>
+
+    <div class="facial-card">
+        <img src="~/Images/FacialServices/Basic Facial.jpg" alt="Le’Ray Signature Facial" class="facial-img">
+        <span class="price">₱2,499 / Session</span>
+        <h3>LE’RAY SIGNATURE FACIAL</h3>
+        <p>A luxurious multi-step facial combining premium techniques for ultimate rejuvenation.</p>
+        <a href="/Home/Booking?service=LeRay%20Signature%20Facial&price=2499" class="book-btn">BOOK NOW</a>
+    </div>
+
+    <div class="facial-card">
+        <img src="~/Images/FacialServices/PDTLight.jpg" alt="PDT Light Treatment" class="facial-img">
+        <span class="price">₱499 / Session</span>
+        <h3>PDT LIGHT TREATMENT</h3>
+        <p>A non-invasive LED therapy that calms inflammation, fights acne, and promotes cellular repair.</p>
+        <a href="/Home/Booking?service=PDT%20Light%20Treatment&price=499" class="book-btn">BOOK NOW</a>
+    </div>
+
+    <div class="facial-card">
+        <img src="~/Images/FacialServices/Diamond.jpg" alt="Diamond Facial" class="facial-img">
+        <span class="price">₱1,999 / Session</span>
+        <h3>LE’RAY DIAMOND FACIAL</h3>
+        <p>An exfoliating diamond tip technology to smooth skin and enhance radiance.</p>
+        <a href="/Home/Booking?service=LeRay%20Diamond%20Facial&price=1999" class="book-btn">BOOK NOW</a>
+    </div>
+
+    <div class="facial-card">
+        <img src="~/Images/FacialServices/hydra.jpg" alt="Hydra Facial" class="facial-img">
+        <span class="price">₱1,599 / Session</span>
+        <h3>LE’RAY HYDRA FACIAL</h3>
+        <p>Infuses hydration while cleansing dull or sensitive skin in need of renewal.</p>
+        <a href="/Home/Booking?service=LeRay%20Hydra%20Facial&price=1599" class="book-btn">BOOK NOW</a>
+    </div>
+
+    <div class="facial-card">
+        <img src="~/Images/FacialServices/AcneShot.jpg" alt="Acne Shot Treatment" class="facial-img">
+        <span class="price">₱1,000 / Shot</span>
+        <h3>ACNE SHOT TREATMENT</h3>
+        <p>A quick and effective injectable that targets stubborn pimples for fast, visible results.</p>
+        <a href="/Home/Booking?service=Acne%20Shot%20Treatment&price=1000" class="book-btn">BOOK NOW</a>
+    </div>
+
+    <div class="facial-card">
+        <img src="~/Images/FacialServices/GoldMask.jpg" alt="Gold Mask Treatment" class="facial-img">
+        <span class="price">₱499 / Session</span>
+        <h3>GOLD MASK TREATMENT</h3>
+        <p>A revitalizing mask infused with real gold to improve complexion and restore youthful glow.</p>
+        <a href="/Home/Booking?service=Gold%20Mask%20Treatment&price=499" class="book-btn">BOOK NOW</a>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/Services_script.js" asp-append-version="true"></script>
+}
