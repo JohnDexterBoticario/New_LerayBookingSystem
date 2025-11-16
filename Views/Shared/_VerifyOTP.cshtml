@@ -1,0 +1,31 @@
+<!-- OTP VERIFICATION MODAL -->
+<div id="otpModal" class="modal" tabindex="-1" aria-labelledby="otpTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content otp-modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="otpTitle">OTP Verification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>We have sent a 6-digit verification code to your email. Please enter it below:</p>
+
+        <input type="hidden" id="otpEmail" />
+
+        <div class="otp-inputs d-flex justify-content-between">
+          <input type="text" maxlength="1" class="otp-digit form-control" />
+          <input type="text" maxlength="1" class="otp-digit form-control" />
+          <input type="text" maxlength="1" class="otp-digit form-control" />
+          <input type="text" maxlength="1" class="otp-digit form-control" />
+          <input type="text" maxlength="1" class="otp-digit form-control" />
+          <input type="text" maxlength="1" class="otp-digit form-control" />
+        </div>
+
+        <p id="otpMessage" class="text-danger mt-2"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="verifyOtpBtn" class="btn btn-primary">Verify OTP</button>
+        <button type="button" id="resendOtpBtn" class="btn btn-secondary">Resend OTP</button>
+      </div>
+    </div>
+  </div>
+</div>
