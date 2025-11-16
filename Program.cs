@@ -19,6 +19,9 @@ var builder = WebApplication.CreateBuilder(args);
 // ====================================
 // SERVICES CONFIGURATION
 // ====================================
+//builder.Services.AddScoped<IAuditService, AuditService>();
+//builder.Services.AddScoped<IAuditLogService, AuditLogService>();
+builder.Services.AddHttpContextAccessor();
 
 // ✅ Email Services
 builder.Services.AddScoped<IEmailService, EmailService>();
@@ -36,6 +39,8 @@ builder.Services.AddScoped<IUrlHelper>(x =>
     var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext ?? new ActionContext();
     return x.GetRequiredService<IUrlHelperFactory>().GetUrlHelper(actionContext);
 });
+builder.Services.AddScoped<IAuditService, AuditService>();
+builder.Services.AddHttpContextAccessor();
 
 // ✅ MVC + Razor
 builder.Services.AddControllersWithViews();

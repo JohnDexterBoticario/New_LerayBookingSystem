@@ -6,23 +6,48 @@ using Microsoft.EntityFrameworkCore;
 using New_LeRayBookingSystem.Data;
 using New_LeRayBookingSystem.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using New_LeRayBookingSystem.Services;
 
 namespace New_LeRayBookingSystem.Controllers
 {
+    [Authorize]
     public class PromosController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IAuditService _audit;
 
-        public PromosController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public PromosController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IAuditService audit)
         {
             _context = context;
             _userManager = userManager;
+            _audit = audit;
         }
+
+        private string GetUserId() =>
+            User?.Identity?.IsAuthenticated == true
+                ? _userManager.GetUserId(User)
+                : "Anonymous";
+
+        private string IP() =>
+            HttpContext.Connection.RemoteIpAddress?.ToString();
+
+        private string UA() =>
+            Request.Headers["User-Agent"].ToString();
 
         // GET: Promos
         public async Task<IActionResult> Index()
         {
+            await _audit.LogAsync(
+                GetUserId(),
+                "Viewed",
+                "Promos",
+                "Viewed promo list",
+                IP(),
+                UA()
+            );
+
             var promos = await _context.Promos
                 .Include(p => p.CreatedByUser)
                 .ToListAsync();
@@ -41,6 +66,15 @@ namespace New_LeRayBookingSystem.Controllers
 
             if (promo == null) return NotFound();
 
+            await _audit.LogAsync(
+                GetUserId(),
+                "Viewed",
+                "Promos",
+                $"Viewed details of promo ID {promo.Id}",
+                IP(),
+                UA()
+            );
+
             return View(promo);
         }
 
@@ -49,9 +83,9 @@ namespace New_LeRayBookingSystem.Controllers
         {
             var promo = new Promos
             {
-                PromoCode = GeneratePromoCode(), // ✅ auto-generate 4-char promo code
+                PromoCode = GeneratePromoCode(),
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddDays(30), // default 30 days validity
+                EndDate = DateTime.Now.AddDays(30),
                 IsActive = true
             };
 
@@ -66,16 +100,22 @@ namespace New_LeRayBookingSystem.Controllers
             if (ModelState.IsValid)
             {
                 promo.CreatedAt = DateTime.Now;
+                promo.CreatedBy = GetUserId();
 
-                // ✅ Auto-assign logged-in user as creator
-                promo.CreatedBy = _userManager.GetUserId(User);
-
-                // ✅ Ensure PromoCode exists
                 if (string.IsNullOrWhiteSpace(promo.PromoCode))
                     promo.PromoCode = GeneratePromoCode();
 
                 _context.Add(promo);
                 await _context.SaveChangesAsync();
+
+                await _audit.LogAsync(
+                    GetUserId(),
+                    "Created",
+                    "Promos",
+                    $"Created promo '{promo.Title}' with code {promo.PromoCode}",
+                    IP(),
+                    UA()
+                );
 
                 return RedirectToAction(nameof(Index));
             }
@@ -107,6 +147,15 @@ namespace New_LeRayBookingSystem.Controllers
                 {
                     _context.Update(promo);
                     await _context.SaveChangesAsync();
+
+                    await _audit.LogAsync(
+                        GetUserId(),
+                        "Updated",
+                        "Promos",
+                        $"Updated promo ID {promo.Id} ({promo.Title})",
+                        IP(),
+                        UA()
+                    );
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,6 +166,7 @@ namespace New_LeRayBookingSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(promo);
         }
 
@@ -144,6 +194,15 @@ namespace New_LeRayBookingSystem.Controllers
             {
                 _context.Promos.Remove(promo);
                 await _context.SaveChangesAsync();
+
+                await _audit.LogAsync(
+                    GetUserId(),
+                    "Deleted",
+                    "Promos",
+                    $"Deleted promo ID {promo.Id} ({promo.Title})",
+                    IP(),
+                    UA()
+                );
             }
             return RedirectToAction(nameof(Index));
         }
@@ -153,7 +212,6 @@ namespace New_LeRayBookingSystem.Controllers
             return _context.Promos.Any(e => e.Id == id);
         }
 
-        // ✅ Helper: Generate 4-character random promo code with "LeRay-" prefix
         private string GeneratePromoCode()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -162,6 +220,5 @@ namespace New_LeRayBookingSystem.Controllers
                 .Select(s => s[random.Next(s.Length)]).ToArray());
             return $"LeRay-{suffix}";
         }
-
     }
 }

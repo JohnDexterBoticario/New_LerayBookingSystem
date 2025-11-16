@@ -1,0 +1,126 @@
+@{
+    ViewData["Title"] = "Appointments Calendar";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-light mb-4">📅 Appointments Calendar</h2>
+    <div id="calendar"></div>
+</div>
+
+<!-- Modal: Create Appointment -->
+<div class="modal fade" id="createAppointmentModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-light">
+      <div class="modal-header border-secondary">
+        <h5 class="modal-title">Create Appointment</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="createAppointmentForm">
+            <div class="mb-3">
+                <label for="appointmentDate" class="form-label">Date & Time</label>
+                <input type="datetime-local" class="form-control" id="appointmentDate" required />
+            </div>
+            <div class="mb-3">
+                <label for="serviceId" class="form-label">Service</label>
+                <select id="serviceId" class="form-select" required>
+                    <option value="">Select a service</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea id="notes" class="form-control" placeholder="Optional notes"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="paymentMethod" class="form-label">Payment Method</label>
+                <select id="paymentMethod" class="form-select">
+                    <option value="Cash">Cash</option>
+                    <option value="Online">Online</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="totalPrice" class="form-label">Total Price</label>
+                <input type="number" id="totalPrice" class="form-control" placeholder="0.00" min="0" step="0.01" />
+            </div>
+            <button type="submit" class="btn btn-success w-100">Create Appointment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Initialize calendar
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    selectable: true,
+    height: 'auto',
+    timeZone: 'local',
+    eventTimeFormat: { hour: '2-digit', minute: '2-digit', hour12: false },
+    events: {
+        url: '/api/ApiAppointments',
+        method: 'GET',
+        failure: function() {
+            alert('Failed to load appointments.');
+        },
+        success: function(events) {
+            console.log('Loaded events:', events);
+        }
+    },
+    dateClick: function (info) {
+        document.getElementById('appointmentDate').value = info.dateStr + "T09:00";
+        new bootstrap.Modal(document.getElementById('createAppointmentModal')).show();
+    }
+});
+calendar.render();
+
+           
+
+            // Load services for dropdown
+            fetch('/api/ApiServices')
+                .then(r => r.json())
+                .then(services => {
+                    const select = document.getElementById('serviceId');
+                    select.innerHTML = '<option value="">Select a service</option>';
+                    services.forEach(s => {
+                        const opt = document.createElement('option');
+                        opt.value = s.id;
+                        opt.textContent = s.serviceName;
+                        select.appendChild(opt);
+                    });
+                });
+
+            // Handle form submit (create new appointment)
+            document.getElementById('createAppointmentForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const payload = {
+                    serviceId: parseInt(document.getElementById('serviceId').value),
+                    startTime: document.getElementById('appointmentDate').value,
+                    notes: document.getElementById('notes').value,
+                    paymentMethod: document.getElementById('paymentMethod').value,
+                    totalPrice: parseFloat(document.getElementById('totalPrice').value) || 0
+                };
+
+                fetch('/api/ApiAppointments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                })
+                .then(r => r.json())
+                .then(data => {
+                    alert('Appointment created successfully!');
+                    bootstrap.Modal.getInstance(document.getElementById('createAppointmentModal')).hide();
+                    calendar.refetchEvents();
+                })
+                .catch(err => alert('Error creating appointment.'));
+            });
+        });
+    </script>
+}

@@ -178,6 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // ✅ Terms and Privacy checkbox validation
       const agreeTerms = document.getElementById("agreeTerms");
       if (agreeTerms && !agreeTerms.checked) {
+      alert("⚠️ Please agree to the Terms and Privacy Policy before creating an account.");
         displayMessage("⚠️ Please agree to the Terms and Privacy Policy before creating an account.", 'error');
         return;
       }
@@ -213,6 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
       // ✅ Validate email format
       if (email && !emailRegex.test(email)) {
+      alert("❌ Please enter a valid email address — must include a valid domain like .com, .ph, or .org.");
         displayMessage("❌ Please enter a valid email address.", 'error');
         return;
       }

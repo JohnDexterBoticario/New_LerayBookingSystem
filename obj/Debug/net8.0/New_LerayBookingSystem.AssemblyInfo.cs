@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("New_LerayBookingSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e16ebf901b4c32925a9173a23e04bc8a33b76ac1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66333f696be5e4ea696d56dc66853c3d79ad4849")]
 [assembly: System.Reflection.AssemblyProductAttribute("New_LerayBookingSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("New_LerayBookingSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

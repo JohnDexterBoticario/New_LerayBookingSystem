@@ -168,9 +168,32 @@ namespace New_LerayBookingSystem.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return Ok(new { message = "Logged out successfully." });
+
+    // Detect if request is API (JSON) or Web (HTML)
+    if (Request.Headers["Accept"].ToString().Contains("application/json"))
+    {
+        // Return JSON for API logout
+        return Ok(new { message = "Logged out successfully." });
+    }
+
+    // Otherwise redirect to Home page (for web UI logout)
+    return RedirectToAction("Index", "Home");
         }
 
+[Authorize]
+[HttpGet]
+public async Task<IActionResult> LogoutGet()
+{
+    await _signInManager.SignOutAsync();
+
+    // Same logic for GET requests
+    if (Request.Headers["Accept"].ToString().Contains("application/json"))
+    {
+        return Ok(new { message = "Logged out successfully." });
+    }
+
+    return RedirectToAction("Index", "Home");
+}
 
         // ===========================================================
         // 🟡 FORGOT PASSWORD (Request Reset Link)

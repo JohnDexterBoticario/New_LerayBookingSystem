@@ -214,6 +214,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
     
             const formData = new FormData(); 
+
+            /*
             const token = localStorage.getItem('authToken');
     
             if (!token) {
@@ -221,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = '/';
                 return;
             }
-    
+            */
             // Manually Set All DTO Fields from hidden inputs
             if (serviceIdInput) {
                  formData.append("ServiceId", serviceIdInput.value);
@@ -255,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const response = await fetch("/api/Bookings", {
                     method: "POST",
                     body: formData,
-                    headers: { "Authorization": `Bearer ${token}` }
+                    //headers: { "Authorization": `Bearer ${token}` }
                 });
     
                 if (response.ok) {
