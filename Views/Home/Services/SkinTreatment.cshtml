@@ -5,43 +5,51 @@
 @section Styles {
     <link rel="stylesheet" href="~/css/facial_style.css" asp-append-version="true" />
 }
-  <h2 class="title">SERVICES</h2>
+  <h2 class="title">SERVICES</h2>
 
-  <div class="facial-grid">
-    <div class="facial-card">
-      <img src="~/Images/SkinTreatmentServices/WartsRemoval.jpg" alt="WARTS REMOVAL" class="facial-img">
-      <span class="price">₱899 / Session</span>
-      <h3>WARTS REMOVAL</h3>
-      <p>A refreshing cleanse that revives your skin with essential care—perfect for a quick glow-up and maintenance.</p>
-      <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
-    </div>
+  <div class="facial-grid">
+        <div class="facial-card">
+      <img src="~/Images/SkinTreatmentServices/WartsRemoval.jpg" alt="WARTS REMOVAL" class="facial-img">
+      <span class="price">₱999 / Session</span>
+      <h3>WARTS REMOVAL</h3>
+      <p>A refreshing cleanse that revives your skin with essential care—perfect for a quick glow-up and maintenance.</p>
+      <a href="/Home/Booking?service=Warts%20Removal&id=99&price=999&category=Skin%20Treatments
+        &img=WartsRemoval.jpg
+        &desc=Warts%20Removal%20Treatment" class="book-btn">BOOK NOW</a>
+    </div>
 
-    <div class="facial-card">
-      <img src="~/Images/SkinTreatmentServices/Syringoma.jpg" alt="SYRINGOMA" 
- class="facial-img">
-      <span class="price">₱999 / Session</span>
-      <h3>SYRINGOMA</h3>
-      <p>Targets breakouts and clears impurities with deep cleansing and anti-inflammatory treatments for calmer skin.</p>
-      <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
-    </div>
+        <div class="facial-card">
+      <img src="~/Images/SkinTreatmentServices/Syringoma.jpg" alt="SYRINGOMA REMOVAL" 
+ class="facial-img">
+      <span class="price">₱999 / Session</span>
+      <h3>SYRINGOMA REMOVAL</h3>
+      <p>Targets breakouts and clears impurities with deep cleansing and anti-inflammatory treatments for calmer skin.</p>
+      <a href="/Home/Booking?service=Syringoma%20Removal&id=97&price=999&category=Skin%20Treatments
+        &img=Syringoma.jpg
+        &desc=Syringoma%20Removal%20Treatment" class="book-btn">BOOK NOW</a>
+    </div>
 
-    <div class="facial-card">
-      <img src="~/Images/SkinTreatmentServices/SkinTag.jpg" alt="SKIN TAG" class="facial-img">
-      <span class="price">₱2,499 / Session</span>
-      <h3>SKIN TAG</h3>
-      <p>A luxurious multi-step facial combining premium techniques for ultimate rejuvenation.</p>
-      <a 
- href="/Home/Booking" class="book-btn">BOOK NOW</a>
-    </div>
+        <div class="facial-card">
+      <img src="~/Images/SkinTreatmentServices/SkinTag.jpg" alt="SKIN TAG REMOVAL" class="facial-img">
+      <span class="price">₱999 / Session</span>
+      <h3>SKIN TAG REMOVAL</h3>
+      <p>A luxurious multi-step facial combining premium techniques for ultimate rejuvenation.</p>
+      <a 
+ href="/Home/Booking?service=Skin%20Tag%20Removal&id=98&price=999&category=Skin%20Treatments
+        &img=SkinTag.jpg
+        &desc=Skin%20Tag%20Removal%20Treatment" class="book-btn">BOOK NOW</a>
+    </div>
 
-    <div class="facial-card">
-      <img src="~/Images/SkinTreatmentServices/Milia.jpg" alt="MILIA REMOVAL" class="facial-img">
-      <span class="price">₱499 / Session</span>
-      <h3>MILIA REMOVAL</h3>
-      <p>A non-invasive LED therapy that calms inflammation, fights acne, and promotes cellular repair.</p>
-      <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
-    </div>
+        <div class="facial-card">
+      <img src="~/Images/SkinTreatmentServices/Milia.jpg" alt="MILIA REMOVAL" class="facial-img">
+      <span class="price">₱799 / Session</span>
+      <h3>MILIA REMOVAL</h3>
+      <p>A non-invasive LED therapy that calms inflammation, fights acne, and promotes cellular repair.</p>
+      <a href="/Home/Booking?service=Milia%20Removal&id=96&price=799&category=Skin%20Treatments
+        &img=Milia.jpg
+        &desc=Milia%20Removal%20Treatment" class="book-btn">BOOK NOW</a>
+    </div>
 
-   @section Scripts {
-    <script src="~/js/Services_script.js" asp-append-version="true"></script>
+   @section Scripts {
+    <script src="~/js/Services_script.js" asp-append-version="true"></script>
 }

@@ -329,8 +329,20 @@
       "PackagePath": "staticwebassets\\css\\CreateAccount_style.css"
     },
     {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\Forgotpassword.css",
+      "PackagePath": "staticwebassets\\css\\Forgotpassword.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\ResetPassword.css",
+      "PackagePath": "staticwebassets\\css\\ResetPassword.css"
+    },
+    {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\Services_style.css",
       "PackagePath": "staticwebassets\\css\\Services_style.css"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\VerifyOTP.css",
+      "PackagePath": "staticwebassets\\css\\VerifyOTP.css"
     },
     {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\css\\about_style.css",
@@ -365,10 +377,6 @@
       "PackagePath": "staticwebassets\\js\\Booking.js"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\Booking2.js",
-      "PackagePath": "staticwebassets\\js\\Booking2.js"
-    },
-    {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\ClientHistory.js",
       "PackagePath": "staticwebassets\\js\\ClientHistory.js"
     },
@@ -385,8 +393,20 @@
       "PackagePath": "staticwebassets\\js\\Dashboard.js"
     },
     {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\ForgotPassword.js",
+      "PackagePath": "staticwebassets\\js\\ForgotPassword.js"
+    },
+    {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\LogIn_script.js",
       "PackagePath": "staticwebassets\\js\\LogIn_script.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\OTPVerification.js",
+      "PackagePath": "staticwebassets\\js\\OTPVerification.js"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\ResetPassword.js",
+      "PackagePath": "staticwebassets\\js\\ResetPassword.js"
     },
     {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\Services_script.js",
@@ -669,6 +689,10 @@
       "PackagePath": "staticwebassets\\receipts\\27a5ee8f-9303-403f-9281-3d1f06aaa4de_4.PNG"
     },
     {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\53b837fd-3c02-4ef6-b84e-785add6696d7_4.PNG",
+      "PackagePath": "staticwebassets\\receipts\\53b837fd-3c02-4ef6-b84e-785add6696d7_4.PNG"
+    },
+    {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\58d2bc20-86a5-479e-a10f-bd2efee5a4a8_Full package.png",
       "PackagePath": "staticwebassets\\receipts\\58d2bc20-86a5-479e-a10f-bd2efee5a4a8_Full package.png"
     },
@@ -687,6 +711,10 @@
     {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\b2ed7c13-5f92-4454-80ba-ded71b09f9ee_Neck.png",
       "PackagePath": "staticwebassets\\receipts\\b2ed7c13-5f92-4454-80ba-ded71b09f9ee_Neck.png"
+    },
+    {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\b6c38abb-fe35-4cd7-b127-565f66549e3f_BB Glow(FACE).jpg",
+      "PackagePath": "staticwebassets\\receipts\\b6c38abb-fe35-4cd7-b127-565f66549e3f_BB Glow(FACE).jpg"
     },
     {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\b6e3b35f-ce22-47e6-aea9-9d1c35057ba9_GlutaSingle Dose.png",

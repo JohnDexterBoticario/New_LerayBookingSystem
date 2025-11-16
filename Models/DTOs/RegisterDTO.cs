@@ -17,10 +17,6 @@ namespace New_LeRayBookingSystem.Models.DTOs
         [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
         public required string Email { get; set; }
 
-        // ✅ Optional but validated if provided
-        [RegularExpression(@"^(?:\+639|09)\d{9}$", ErrorMessage = "Please enter a valid PH phone number (e.g., +639123456789 or 09123456789).")]
-        public string? PhoneNumber { get; set; }
-
         [Required(ErrorMessage = "Password is required.")]
         [MinLength(6, ErrorMessage = "Password must be at least 6 characters long.")]
         public required string Password { get; set; }
@@ -28,8 +24,5 @@ namespace New_LeRayBookingSystem.Models.DTOs
         [Required(ErrorMessage = "Confirm Password is required.")]
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public required string ConfirmPassword { get; set; }
-
-        [Required(ErrorMessage = "Captcha verification is required.")]
-        public required string CaptchaToken { get; set; }
     }
 }

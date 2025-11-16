@@ -7,7 +7,6 @@ using MailKit.Security;
 
 namespace New_LeRayBookingSystem.Services
 {
-    // ✅ Implements both your custom IEmailService and Identity’s IEmailSender
     public class EmailService : IEmailService, IEmailSender
     {
         private readonly EmailSettings _emailSettings;
@@ -17,8 +16,7 @@ namespace New_LeRayBookingSystem.Services
             _emailSettings = emailSettings.Value;
         }
 
-        // ✅ This method supports both your system and Identity pages
-        public async Task SendEmailAsync(string toEmail, string subject, string htmlMessage)
+        public async Task SendEmailAsync(string toEmail, string subject, string messageHtml)
         {
             if (string.IsNullOrWhiteSpace(toEmail))
                 throw new ArgumentNullException(nameof(toEmail), "Recipient email cannot be null or empty.");
@@ -30,30 +28,36 @@ namespace New_LeRayBookingSystem.Services
 
             var builder = new BodyBuilder
             {
-                HtmlBody = htmlMessage,
-                TextBody = StripHtmlTags(htmlMessage)
+                HtmlBody = messageHtml,
+                TextBody = StripHtmlTags(messageHtml)
             };
 
             email.Body = builder.ToMessageBody();
 
             using var smtp = new SmtpClient();
 
-            var secureSocket = _emailSettings.UseSSL
-                ? SecureSocketOptions.SslOnConnect // Port 465
-                : SecureSocketOptions.StartTls;    // Port 587
+            // Automatically select secure socket options
+            SecureSocketOptions secureSocket;
+            if (_emailSettings.SmtpPort == 587)
+            {
+                secureSocket = SecureSocketOptions.StartTls; // Gmail and most servers on 587
+            }
+            else if (_emailSettings.SmtpPort == 465)
+            {
+                secureSocket = SecureSocketOptions.SslOnConnect; // Gmail SSL port
+            }
+            else
+            {
+                // Use UseSSL property for custom ports
+                secureSocket = _emailSettings.UseSSL ? SecureSocketOptions.SslOnConnect : SecureSocketOptions.StartTls;
+            }
 
-            await smtp.ConnectAsync(
-                _emailSettings.SmtpServer,
-                _emailSettings.SmtpPort,
-                secureSocket
-            );
-
+            await smtp.ConnectAsync(_emailSettings.SmtpServer, _emailSettings.SmtpPort, secureSocket);
             await smtp.AuthenticateAsync(_emailSettings.Username, _emailSettings.Password);
             await smtp.SendAsync(email);
             await smtp.DisconnectAsync(true);
         }
 
-        // Optional helper for fallback plain text body
         private static string StripHtmlTags(string html)
         {
             if (string.IsNullOrWhiteSpace(html)) return string.Empty;

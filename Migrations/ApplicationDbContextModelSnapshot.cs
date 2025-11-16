@@ -193,10 +193,6 @@ namespace New_LerayBookingSystem.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
@@ -204,12 +200,6 @@ namespace New_LerayBookingSystem.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("varchar(256)");
-
-                    b.Property<string>("OtpCode")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("OtpExpires")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("longtext");
@@ -220,11 +210,14 @@ namespace New_LerayBookingSystem.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("longtext");
+
+                    b.Property<string>("TwoFactorCode")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("TwoFactorCodeExpiry")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");

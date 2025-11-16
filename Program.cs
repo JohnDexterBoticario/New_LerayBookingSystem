@@ -10,59 +10,54 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Mvc.Infrastructure; // Required for IActionContextAccessor
-using Microsoft.AspNetCore.Mvc.Routing; // Required for IUrlHelperFactory
-using Microsoft.AspNetCore.Mvc; // Required for IUrlHelper and ActionContext
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ====================================
-// SERVICES CONFIGURATION
-// ====================================
-
-// ✅ Email Services
-builder.Services.AddScoped<IEmailService, EmailService>();
+// ==========================================================
+// EMAIL SERVICES — CLEAN + CORRECT
+// ==========================================================
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.AddTransient<IEmailSender, EmailService>();
 
-// 🎯 REQUIRED FOR IUrlHelper IN API CONTROLLER (To generate Password Reset Link)
-// NOTE: For services generating links outside of a Controller, consider injecting LinkGenerator (IUrlHelper is designed for Controller context).
+// ==========================================================
+// URL HELPERS (NEEDED FOR RESET PASSWORD LINKS)
+// ==========================================================
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
-// 🛠️ Structural Fix: Simplified IUrlHelper registration. 
-// It now correctly attempts to resolve the current ActionContext or uses an empty one as a fallback.
-builder.Services.AddScoped<IUrlHelper>(x =>
+builder.Services.AddScoped<IUrlHelper>(sp =>
 {
-    var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext ?? new ActionContext();
-    return x.GetRequiredService<IUrlHelperFactory>().GetUrlHelper(actionContext);
+    var actionContext = sp.GetRequiredService<IActionContextAccessor>().ActionContext
+                       ?? new ActionContext();
+    return sp.GetRequiredService<IUrlHelperFactory>().GetUrlHelper(actionContext);
 });
 
-// ✅ MVC + Razor
+// ==========================================================
+// MVC + RAZOR
+// ==========================================================
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-// ✅ JWT Token Generator
-builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
-
-// ✅ Bind Services
-builder.Services.Configure<JwtSettings>(
-    builder.Configuration.GetSection("JwtSettings")
-);
-builder.Services.AddScoped<IAuthService, AuthService>();
-
-// ✅ Configure MySQL Database
+// ==========================================================
+// DATABASE
+// ==========================================================
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
 
-// ====================================
-// IDENTITY CONFIGURATION
-// ====================================
-
+// ==========================================================
+// IDENTITY CONFIG
+// ==========================================================
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
+
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
@@ -72,86 +67,82 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
-// ✅ Configure Identity Cookie
+// Cookie settings
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Home/Index";
     options.AccessDeniedPath = "/Home/Index";
+    options.ExpireTimeSpan = TimeSpan.FromHours(1);
     options.SlidingExpiration = true;
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
 });
 
-// ====================================
-// JWT AUTHENTICATION CONFIGURATION (Setup & Validation Key)
-// ====================================
+// ==========================================================
+// JWT CONFIG
+// ==========================================================
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtSettings")
+);
 
-var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
-if (jwtSettings == null || string.IsNullOrWhiteSpace(jwtSettings.Secret))
-    throw new InvalidOperationException("JWT Secret not configured properly in appsettings.json.");
+var jwtSettings = builder.Configuration
+    .GetSection("JwtSettings")
+    .Get<JwtSettings>();
 
-var key = Encoding.ASCII.GetBytes(jwtSettings.Secret);
+var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
 
-// ====================================
-// MULTI-AUTH CONFIGURATION (IDENTITY + GOOGLE + FACEBOOK + JWT)
-// ====================================
+builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
-// Do NOT override Identity's default cookie scheme (which is registered by AddIdentity).
-// AddAuthentication is used to add *additional* schemes (JWT, Google, Facebook).
+// ==========================================================
+// AUTHENTICATION: IDENTITY + GOOGLE + FACEBOOK + JWT
+// ==========================================================
 builder.Services.AddAuthentication()
-    // JWT Bearer (for API calls)
     .AddJwtBearer(options =>
     {
         options.RequireHttpsMetadata = false;
         options.SaveToken = true;
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(key),
             ValidateIssuer = true,
             ValidIssuer = jwtSettings.Issuer,
+
             ValidateAudience = true,
             ValidAudience = jwtSettings.Audience,
+
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key)
         };
     })
-    // Google Login
-    .AddGoogle(googleOptions =>
+    .AddGoogle(google =>
     {
-        googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
-        googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+        google.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+        google.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
     })
-    // Facebook Login
-    .AddFacebook(facebookOptions =>
+    .AddFacebook(facebook =>
     {
-        facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
-        facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+        facebook.AppId = builder.Configuration["Authentication:Facebook:AppId"];
+        facebook.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
     });
 
-// ====================================
-// EMAIL + CORS CONFIGURATION
-// ====================================
-
-builder.Services.Configure<EmailSettings>(
-    builder.Configuration.GetSection("EmailSettings")
-);
-
+// ==========================================================
+// CORS — for your frontend
+// ==========================================================
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontendAccess", policy =>
     {
         policy.WithOrigins("http://localhost:5078")
-              .AllowAnyHeader()
               .AllowAnyMethod()
+              .AllowAnyHeader()
               .AllowCredentials();
     });
 });
 
 var app = builder.Build();
 
-// ====================================
-// DATABASE INITIALIZATION (Roles and SuperAdmin)
-// ====================================
-
-// Ensure this block is wrapped in 'using' to properly scope services.
+// ==========================================================
+// DB INITIALIZATION — Create roles + SuperAdmin
+// ==========================================================
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -159,73 +150,44 @@ using (var scope = app.Services.CreateScope())
     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
     var config = services.GetRequiredService<IConfiguration>();
 
-    try
+    string[] roles = { "Client", "Admin", "SuperAdmin" };
+
+    foreach (var role in roles)
     {
-        string[] roleNames = { "Client", "Admin", "SuperAdmin" };
-        foreach (var roleName in roleNames)
-        {
-            if (!await roleManager.RoleExistsAsync(roleName))
-            {
-                await roleManager.CreateAsync(new IdentityRole(roleName));
-                Console.WriteLine($"✅ Role '{roleName}' created.");
-            }
-        }
-
-        // === SUPERADMIN CREATION ===
-        var superAdminEmail = config["SuperAdmin:Email"];
-        var superAdminPassword = config["SuperAdmin:Password"];
-        var superAdminFullName = config["SuperAdmin:FullName"];
-        // Removed unused config keys (Gender, Address) from logic for cleaner code
-        
-        if (!string.IsNullOrWhiteSpace(superAdminEmail))
-        {
-            var superAdminUser = await userManager.FindByEmailAsync(superAdminEmail);
-            if (superAdminUser == null)
-            {
-                var newSuperAdmin = new ApplicationUser(
-                    fullName: superAdminFullName ?? "Default SuperAdmin"
-                )
-                {
-                    UserName = superAdminEmail,
-                    Email = superAdminEmail,
-                    EmailConfirmed = true,
-                    DateJoined = DateTime.UtcNow,
-                    CreatedAt = DateTime.UtcNow
-                };
-
-                var creationPassword = superAdminPassword ?? "StrongP@ssword123";
-
-                var result = await userManager.CreateAsync(newSuperAdmin, creationPassword);
-                if (result.Succeeded)
-                {
-                    await userManager.AddToRoleAsync(newSuperAdmin, "SuperAdmin");
-                    Console.WriteLine($"✅ SuperAdmin '{superAdminEmail}' created with password set.");
-                }
-                else
-                {
-                    Console.WriteLine($"❌ Failed to create SuperAdmin: {string.Join(", ", result.Errors.Select(e => e.Description))}");
-                }
-            }
-            else
-            {
-                Console.WriteLine($"ℹ️ SuperAdmin '{superAdminEmail}' already exists.");
-            }
-        }
-        else
-        {
-            Console.WriteLine("⚠️ SuperAdmin email not set in appsettings.json. Skipping SuperAdmin creation.");
-        }
+        if (!await roleManager.RoleExistsAsync(role))
+            await roleManager.CreateAsync(new IdentityRole(role));
     }
-    catch (Exception ex)
+
+    // SUPERADMIN SETUP
+    var email = config["SuperAdmin:Email"];
+    var password = config["SuperAdmin:Password"];
+    var name = config["SuperAdmin:FullName"];
+
+    if (!string.IsNullOrWhiteSpace(email))
     {
-        Console.WriteLine($"An error occurred during DB initialization: {ex.Message}");
+        var superAdmin = await userManager.FindByEmailAsync(email);
+        if (superAdmin == null)
+        {
+            superAdmin = new ApplicationUser
+            {
+                UserName = email,
+                Email = email,
+                FullName = name,
+                EmailConfirmed = true,
+                CreatedAt = DateTime.UtcNow,
+                DateJoined = DateTime.UtcNow
+            };
+
+            var create = await userManager.CreateAsync(superAdmin, password);
+            if (create.Succeeded)
+                await userManager.AddToRoleAsync(superAdmin, "SuperAdmin");
+        }
     }
 }
 
-// ====================================
-// MIDDLEWARE CONFIGURATION
-// ====================================
-
+// ==========================================================
+// MIDDLEWARE
+// ==========================================================
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -237,16 +199,17 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseCors("AllowFrontendAccess");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ====================================
-// ROLE-BASED DASHBOARD REDIRECTS (from root '/')
-// ====================================
-
+// ==========================================================
+// REDIRECT USER BY ROLE
+// ==========================================================
 app.Use(async (context, next) =>
 {
-    if (context.User.Identity?.IsAuthenticated == true && context.Request.Path == "/")
+    if (context.User.Identity?.IsAuthenticated == true &&
+        context.Request.Path == "/")
     {
         var userManager = context.RequestServices.GetRequiredService<UserManager<ApplicationUser>>();
         var user = await userManager.GetUserAsync(context.User);
@@ -260,25 +223,24 @@ app.Use(async (context, next) =>
                 context.Response.Redirect("/Admin/Dashboard");
                 return;
             }
-            
+
             if (roles.Contains("Admin"))
             {
                 context.Response.Redirect("/Admin/Dashboard");
                 return;
             }
-            // All other authenticated users (like 'Client') will fall through to the default route.
         }
     }
 
     await next();
 });
 
-// ====================================
-// ROUTING CONFIGURATION
-// ====================================
-
+// ==========================================================
+// ROUTES
+// ==========================================================
 app.MapControllers();
 app.MapRazorPages();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"

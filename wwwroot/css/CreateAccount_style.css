@@ -302,6 +302,27 @@ input[type="password"] {
   gap: 6px;
 }
 
+/* ===== OTP Modal Styles ===== */
+.otp-modal-content {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.otp-inputs input {
+  width: 45px;
+  height: 50px;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 3px;
+  border-radius: 6px;
+}
+
+#otpMessage {
+  font-weight: 500;
+}
+
+
 /* ===========================================================
    SWITCH TEXT (Login / Signup)
 =========================================================== */

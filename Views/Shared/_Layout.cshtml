@@ -140,12 +140,12 @@
   </div>
 </div>
 
-
         <button type="submit" class="signup-btn">Sign Up</button>
         <p class="login-link">Already have an account? <a href="#" id="openLogin">Log In</a></p>
       </form>
     </div>
   </div>
+ <partial name="_VerifyOTP" />
 <!-- ===== LOGIN MODAL ===== -->
 <div id="loginModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
   <div class="modal-content login-box">
@@ -257,16 +257,14 @@
     </div>
   </footer>
 
-  <!-- ===== SCRIPTS ===== -->
-  <script src="~/lib/jquery/dist/jquery.min.js"></script>
-  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="~/js/script.js" asp-append-version="true"></script>
-  <script src="~/js/Services_script.js" asp-append-version="true"></script>
-  <script src="~/js/site.js" asp-append-version="true"></script>
-  <script src="~/js/LogIn_script.js" asp-append-version="true"></script>
-  <script src="~/js/TermsAndPrivacy.js" asp-append-version="true"></script>
-  
-
-  @await RenderSectionAsync("Scripts", required: false)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/script.js" asp-append-version="true"></script>
+<script src="~/js/Services_script.js" asp-append-version="true"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/LogIn_script.js" asp-append-version="true"></script>
+<script src="~/js/TermsAndPrivacy.js" asp-append-version="true"></script>
+<script src="~/js/OTPVerification.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

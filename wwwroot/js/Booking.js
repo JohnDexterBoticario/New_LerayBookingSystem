@@ -378,4 +378,68 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error loading slot data:", error);
         }
     })();
+        // ===============================================================
+// ⭐ AUTO-LOAD SERVICE FROM FACIAL SERVICES PAGE (BOOK NOW)
+// ===============================================================
+(function autoLoadServiceFromQuery() {
+    const params = new URLSearchParams(window.location.search);
+
+    const service = params.get("service");
+    const price = params.get("price");
+    const category = params.get("category");
+    const img = params.get("img");
+    const desc = params.get("desc");
+    const serviceId = params.get("id"); // ⭐ Important
+
+    if (!service || !price) return;
+
+    // --- 1. Auto-select category checkbox ---
+    if (category) {
+        const categoryCheckbox = document.querySelector(
+            `.category-checkbox-item input[data-category="${category}"]`
+        );
+        if (categoryCheckbox) {
+            categoryCheckbox.checked = true;
+
+            const categoryDiv = document.getElementById(`category-${category}`);
+            if (categoryDiv) categoryDiv.classList.add("active");
+        }
+    }
+
+    // --- 2. Auto-select the appropriate service ---
+    document.querySelectorAll('input[name="services[]"]').forEach(box => {
+        const label = document.querySelector(`label[for="${box.id}"]`);
+        if (label && label.textContent.includes(service)) {
+            box.checked = true;
+        }
+    });
+
+    updateSelections();
+    updateBundleDisplay();
+
+    // --- 3. Update the summary preview ---
+    const summaryBox = document.getElementById("selected-summary");
+
+    if (summaryBox && img && desc) {
+        summaryBox.innerHTML = `
+            <div style="text-align:center;">
+                <img src="/Images/FacialServices/${img}" 
+                     style="width:230px; border-radius:12px; margin-bottom:10px;" />
+                <h3>${service}</h3>
+                <p>${decodeURIComponent(desc)}</p>
+                <strong style="font-size:20px;">₱${price}</strong>
+            </div>
+        `;
+    }
+
+    // --- 4. Set REAL ServiceId from URL ---
+    if (serviceId) {
+        serviceIdInput.value = serviceId;
+    }
+
+    // --- 5. Sync total price & notes ---
+    totalPriceInput.value = price;
+    notesInput.value = `Selected from Facial Page → ${service} | Price ₱${price}`;
+})();
+
 });

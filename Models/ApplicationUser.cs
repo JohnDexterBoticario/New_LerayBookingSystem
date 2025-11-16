@@ -46,13 +46,11 @@ namespace New_LeRayBookingSystem.Models
         [InverseProperty(nameof(Appointment.LastUpdatedByUser))]
         public ICollection<Appointment>? LastUpdatedAppointments { get; set; }
 
-        // -------------------------
-        // 🔹 Custom Role & OTP Fields
-        // -------------------------
-        public UserRole Role { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string? OtpCode { get; set; }
-        public DateTime? OtpExpires { get; set; }
+
+        // 🔹 OTP / Verification Fields
+        public string? TwoFactorCode { get; set; }
+        public DateTime? TwoFactorCodeExpiry { get; set; }
+
 
         // 🔹 Optional Loyalty Reference
         public Loyalty? Loyalty { get; set; }
@@ -73,6 +71,7 @@ namespace New_LeRayBookingSystem.Models
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
         }
+        
 
         // -------------------------
         // 🔹 Custom ID Generator

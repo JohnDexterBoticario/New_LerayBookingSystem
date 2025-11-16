@@ -1,53 +1,81 @@
 @{
     ViewData["Title"] = "Eyelash Services";
 }
+
 @section Styles {
     <link rel="stylesheet" href="~/css/facial_style.css" asp-append-version="true" />
 }
-  <h2 class="title">SERVICES</h2>
 
-  <div class="facial-grid">
-    <div class="facial-card">
-      <img src="~/Images/EyelashServices/NaturalLook.jpg" alt="NATURAL LOOK" class="facial-img">
-      <span class="price">₱899 / Session</span>
-      <h3>NATURAL LOOK"</h3>
-      <p>A refreshing cleanse that revives your skin with essential care—perfect for a quick glow-up and maintenance.</p>
-      <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
-    </div>
+<h2 class="title">SERVICES</h2>
+
+<div class="facial-grid">
 
     <div class="facial-card">
-      <img src="~/Images/EyelashServices/OpenEyeLook.jpg" alt="OPEN EYE LOOK" class="facial-img">
-      <span class="price">₱999 / Session</span>
-      <h3>OPEN EYE LOOK</h3>
-      <p>Targets breakouts and clears impurities with deep cleansing and anti-inflammatory treatments for calmer skin.</p>
-      <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+        <img src="~/Images/EyelashServices/NaturalLook.jpg" alt="NATURAL LOOK" class="facial-img">
+        <span class="price">₱899 / Session</span>
+        <h3>NATURAL LOOK (Classic)</h3>
+        <p>A refreshing cleanse that revives your skin with essential care—perfect for a quick glow-up and maintenance.</p>
+
+        <a href="/Home/Booking?service=Classic%20Look&id=171&price=599&category=Eyelash%20Extension
+        &img=NaturalLook.jpg
+        &desc=A%20refreshing%20cleanse%20that%20revives%20your%20skin%20with%20essential%20care%E2%80%94perfect%20for%20a%20quick%20glow-up."
+        class="book-btn">BOOK NOW</a>
     </div>
 
-    <div class="facial-card">
-      <img src="~/Images/EyelashServices/CatEyeLook.jpg" alt="CAT EYE LOOK" class="facial-img">
-      <span class="price">₱2,499 / Session</span>
-      <h3>CAT EYE LOOK</h3>
-      <p>A luxurious multi-step facial combining premium techniques for ultimate rejuvenation.</p>
- 
-      <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
-    </div>
 
     <div class="facial-card">
-      <img src="~/Images/EyelashServices/BabyDoll.jpg" alt="BABY DOLL LOOK" class="facial-img">
-      <span class="price">₱499 / Session</span>
-      <h3>BABY DOLL LOOK</h3>
-      <p>A non-invasive LED therapy that calms inflammation, fights acne, and promotes cellular repair.</p>
-      <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+        <img src="~/Images/EyelashServices/OpenEyeLook.jpg" alt="OPEN EYE LOOK" class="facial-img">
+        <span class="price">₱999 / Session</span>
+        <h3>OPEN EYE LOOK</h3>
+        <p>Targets breakouts and clears impurities with deep cleansing and anti-inflammatory treatments for calmer skin.</p>
+
+        <a href="/Home/Booking?service=Open%20Eye%20Look&id=172&price=699&category=Eyelash%20Extension
+        &img=OpenEyeLook.jpg
+        &desc=Enhances%20the%20center%20lashes%20to%20create%20a%20bigger%20and%20brighter%20eye%20appearance."
+        class="book-btn">BOOK NOW</a>
     </div>
 
+
     <div class="facial-card">
-      <img src="~/Images/EyelashServices/Removal.jpg" alt="REMOVAL" class="facial-img">
-      <span class="price">₱1,999 / Session</span>
- 
-       <h3>REMOVAL</h3>
-      <p>An exfoliating diamond tip technology to smooth skin and enhance radiance.</p>
-      <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
+        <img src="~/Images/EyelashServices/CatEyeLook.jpg" alt="CAT EYE LOOK" class="facial-img">
+        <span class="price">₱2,499 / Session</span>
+        <h3>CAT EYE LOOK</h3>
+        <p>A luxurious multi-step facial combining premium techniques for ultimate rejuvenation.</p>
+
+        <a href="/Home/Booking?service=Cat%20Eye%20Look&id=173&price=899&category=Eyelash%20Extension
+        &img=CatEyeLook.jpg
+        &desc=Creates%20a%20fierce%20lifted%20look%20with%20longer%20lashes%20toward%20the%20outer%20corners."
+        class="book-btn">BOOK NOW</a>
     </div>
-    @section Scripts {
+
+
+    <div class="facial-card">
+        <img src="~/Images/EyelashServices/BabyDoll.jpg" alt="BABY DOLL LOOK" class="facial-img">
+        <span class="price">₱499 / Session</span>
+        <h3>BABY DOLL LOOK</h3>
+        <p>A non-invasive LED therapy that calms inflammation, fights acne, and promotes cellular repair.</p>
+
+        <a href="/Home/Booking?service=Baby%20Doll%20Look&id=174&price=999&category=Eyelash%20Extension
+        &img=BabyDoll.jpg
+        &desc=Focuses%20on%20longer%20center%20lashes%20for%20a%20cute%2C%20wide-eyed%20doll-like%20effect."
+        class="book-btn">BOOK NOW</a>
+    </div>
+
+
+    <div class="facial-card">
+        <img src="~/Images/EyelashServices/Removal.jpg" alt="REMOVAL" class="facial-img">
+        <span class="price">₱1,999 / Session</span>
+        <h3>REMOVAL</h3>
+        <p>An exfoliating diamond tip technology to smooth skin and enhance radiance.</p>
+
+        <a href="/Home/Booking?service=Removal&id=179&price=250&category=Eyelash%20Extension
+        &img=Removal.jpg
+        &desc=Safe%20and%20gentle%20removal%20of%20lash%20extensions%20using%20professional-grade%20solution."
+        class="book-btn">BOOK NOW</a>
+    </div>
+
+</div>
+
+@section Scripts {
     <script src="~/js/Services_script.js" asp-append-version="true"></script>
 }

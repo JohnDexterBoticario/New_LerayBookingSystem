@@ -8,34 +8,40 @@
 @section Styles {
     <link rel="stylesheet" href="~/css/facial_style.css" asp-append-version="true" />
 }
-    <h2 class="title">SPA SERVICES</h2>
+    <h2 class="title">SPA SERVICES</h2>
 
-    <div class="facial-grid">
-        <div class="facial-card">
-            <img src="~/Images/SPAServices/FootSpa.jpg" alt="FOOT SPA" class="facial-img">
-            <span class="price">₱899 / Session</span>
-            <h3>FOOT SPA</h3> 
-            <p>A refreshing cleanse that revives your skin with essential care—perfect for a quick glow-up and maintenance.</p>
-            <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
-        </div>
+    <div class="facial-grid">
+                <div class="facial-card">
+            <img src="~/Images/SPAServices/FootSpa.jpg" alt="FOOT SPA" class="facial-img">
+            <span class="price">₱380 / Session</span>
+            <h3>FOOT SPA</h3> 
+            <p>A refreshing cleanse that revives your skin with essential care—perfect for a quick glow-up and maintenance.</p>
+            <a href="/Home/Booking?service=Foot%20Spa&id=180&price=380&category=Spa%20Services
+                &img=FootSpa.jpg
+                &desc=Foot%20Spa" class="book-btn">BOOK NOW</a>
+        </div>
 
-        <div class="facial-card">
-            @* FIX 2: Corrected line break in the image alt attribute to prevent potential HTML breakage *@
-            <img src="~/Images/SPAServices/FootSpa with pedi.jpg" alt="FOOT SPA WITH PEDICURE" class="facial-img">
-            <span class="price">₱999 / Session</span>
-            <h3>FOOT SPA WITH PEDICURE</h3> 
-            <p>Targets breakouts and clears impurities with deep cleansing and anti-inflammatory treatments for calmer skin.</p>
-            <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
-        </div>
+                <div class="facial-card">
+            @* FIX 2: Corrected line break in the image alt attribute to prevent potential HTML breakage *@
+            <img src="~/Images/SPAServices/FootSpa with pedi.jpg" alt="FOOT SPA WITH PEDICURE" class="facial-img">
+            <span class="price">₱500 / Session</span>
+            <h3>FOOT SPA WITH PEDICURE</h3> 
+            <p>Targets breakouts and clears impurities with deep cleansing and anti-inflammatory treatments for calmer skin.</p>
+            <a href="/Home/Booking?service=Foot%20Spa%20with%20Pedicure&id=181&price=500&category=Spa%20Services
+                &img=FootSpa%20with%20pedi.jpg
+                &desc=Foot%20Spa%20with%20Pedicure" class="book-btn">BOOK NOW</a>
+        </div>
 
-        <div class="facial-card">
-            <img src="~/Images/SPAServices/ManiAndPedi.jpg" alt="MANI & PEDI AND FOOT SPA" class="facial-img">
-            <span class="price">₱2,499 / Session</span>
-            <h3>MANI & PEDI AND FOOT SPA</h3>
-            <p>A luxurious multi-step facial combining premium techniques for ultimate rejuvenation.</p>
-            <a href="/Home/Booking" class="book-btn">BOOK NOW</a>
-        </div>
-    </div>
+                <div class="facial-card">
+            <img src="~/Images/SPAServices/ManiAndPedi.jpg" alt="MANI & PEDI AND FOOT SPA" class="facial-img">
+            <span class="price">₱650 / Session</span>
+            <h3>MANI & PEDI AND FOOT SPA (W/ REG. POLISH)</h3>
+            <p>A luxurious multi-step facial combining premium techniques for ultimate rejuvenation.</p>
+            <a href="/Home/Booking?service=Mani%20%26%20Pedi%20and%20Foot%20Spa%20w/%20Reg.%20Polish&id=183&price=650&category=Spa%20Services
+                &img=ManiAndPedi.jpg
+                &desc=Mani%20%26%20Pedi%20and%20Foot%20Spa%20w/%20Reg.%20Polish" class="book-btn">BOOK NOW</a>
+        </div>
+    </div>
 @section Scripts {
-    <script src="~/js/Services_script.js" asp-append-version="true"></script>
+    <script src="~/js/Services_script.js" asp-append-version="true"></script>
 }
