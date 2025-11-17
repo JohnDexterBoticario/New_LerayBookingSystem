@@ -421,6 +421,10 @@
       "PackagePath": "staticwebassets\\js\\about_script.js"
     },
     {
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\adminCalendar.js",
+      "PackagePath": "staticwebassets\\js\\adminCalendar.js"
+    },
+    {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\js\\script.js",
       "PackagePath": "staticwebassets\\js\\script.js"
     },
@@ -673,72 +677,36 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\009c10c5-a1b7-4d44-8640-82bdf40a0c03_Neck.png",
-      "PackagePath": "staticwebassets\\receipts\\009c10c5-a1b7-4d44-8640-82bdf40a0c03_Neck.png"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\00da7c94-4a01-4ce8-8548-f71518c1e003_FACE,Neck,blush.png",
-      "PackagePath": "staticwebassets\\receipts\\00da7c94-4a01-4ce8-8548-f71518c1e003_FACE,Neck,blush.png"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\1b7034ac-397e-4920-8834-20126a586850_Neck.png",
-      "PackagePath": "staticwebassets\\receipts\\1b7034ac-397e-4920-8834-20126a586850_Neck.png"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\27a5ee8f-9303-403f-9281-3d1f06aaa4de_4.PNG",
-      "PackagePath": "staticwebassets\\receipts\\27a5ee8f-9303-403f-9281-3d1f06aaa4de_4.PNG"
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\31c4768a-145d-465f-98ee-48f70e3b8a64_715321.jpg",
+      "PackagePath": "staticwebassets\\receipts\\31c4768a-145d-465f-98ee-48f70e3b8a64_715321.jpg"
     },
     {
       "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\53b837fd-3c02-4ef6-b84e-785add6696d7_4.PNG",
       "PackagePath": "staticwebassets\\receipts\\53b837fd-3c02-4ef6-b84e-785add6696d7_4.PNG"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\58d2bc20-86a5-479e-a10f-bd2efee5a4a8_Full package.png",
-      "PackagePath": "staticwebassets\\receipts\\58d2bc20-86a5-479e-a10f-bd2efee5a4a8_Full package.png"
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\d398de79-33df-419c-b6e3-11f57914e88f_715321.jpg",
+      "PackagePath": "staticwebassets\\receipts\\d398de79-33df-419c-b6e3-11f57914e88f_715321.jpg"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\95a1f0bb-707e-433f-a0c4-e4bd2455fb1f_Neck.png",
-      "PackagePath": "staticwebassets\\receipts\\95a1f0bb-707e-433f-a0c4-e4bd2455fb1f_Neck.png"
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\d771b207-61e0-4af8-bf5e-e140da47a533_output_stage_2_rotated.png",
+      "PackagePath": "staticwebassets\\receipts\\d771b207-61e0-4af8-bf5e-e140da47a533_output_stage_2_rotated.png"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\98b117eb-66db-40ef-9335-eac99b35ed88_GlutaSingle Dose.png",
-      "PackagePath": "staticwebassets\\receipts\\98b117eb-66db-40ef-9335-eac99b35ed88_GlutaSingle Dose.png"
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\e37a5f6d-df19-4d73-b84b-cb30a1a751a5_zed.jpeg",
+      "PackagePath": "staticwebassets\\receipts\\e37a5f6d-df19-4d73-b84b-cb30a1a751a5_zed.jpeg"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\ad572c6d-d4c4-4934-9587-101e9dc903e7_BB GLow Face and neck.png",
-      "PackagePath": "staticwebassets\\receipts\\ad572c6d-d4c4-4934-9587-101e9dc903e7_BB GLow Face and neck.png"
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\efee798b-2a15-4ba2-b75e-1fa79be8f677_715321.jpg",
+      "PackagePath": "staticwebassets\\receipts\\efee798b-2a15-4ba2-b75e-1fa79be8f677_715321.jpg"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\b2ed7c13-5f92-4454-80ba-ded71b09f9ee_Neck.png",
-      "PackagePath": "staticwebassets\\receipts\\b2ed7c13-5f92-4454-80ba-ded71b09f9ee_Neck.png"
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\f4e391afb09649f4895bb6b4a1df40a5_zed.jpeg",
+      "PackagePath": "staticwebassets\\receipts\\f4e391afb09649f4895bb6b4a1df40a5_zed.jpeg"
     },
     {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\b6c38abb-fe35-4cd7-b127-565f66549e3f_BB Glow(FACE).jpg",
-      "PackagePath": "staticwebassets\\receipts\\b6c38abb-fe35-4cd7-b127-565f66549e3f_BB Glow(FACE).jpg"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\b6e3b35f-ce22-47e6-aea9-9d1c35057ba9_GlutaSingle Dose.png",
-      "PackagePath": "staticwebassets\\receipts\\b6e3b35f-ce22-47e6-aea9-9d1c35057ba9_GlutaSingle Dose.png"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\d1592291-9cf0-475a-8e4e-29e9f69e358f_BB blush.png",
-      "PackagePath": "staticwebassets\\receipts\\d1592291-9cf0-475a-8e4e-29e9f69e358f_BB blush.png"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\d6535385-0725-4d9e-ba89-b25ea57e5499_Neck.png",
-      "PackagePath": "staticwebassets\\receipts\\d6535385-0725-4d9e-ba89-b25ea57e5499_Neck.png"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\de14484c-d8de-469b-a80c-f8a161e425c5_Full package.png",
-      "PackagePath": "staticwebassets\\receipts\\de14484c-d8de-469b-a80c-f8a161e425c5_Full package.png"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\e12f6923-36a0-4af6-931a-b9e5aaa946b7_GlutaSingle Dose.png",
-      "PackagePath": "staticwebassets\\receipts\\e12f6923-36a0-4af6-931a-b9e5aaa946b7_GlutaSingle Dose.png"
-    },
-    {
-      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\e3a03767-ef3d-4773-868b-22c110e52920_Full package.png",
-      "PackagePath": "staticwebassets\\receipts\\e3a03767-ef3d-4773-868b-22c110e52920_Full package.png"
+      "Id": "C:\\Users\\Administrator\\Desktop\\New_LerayBookingSystem-main\\wwwroot\\receipts\\f576d270-32e3-4fbe-9982-f733972d0eff_715321.jpg",
+      "PackagePath": "staticwebassets\\receipts\\f576d270-32e3-4fbe-9982-f733972d0eff_715321.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.New_LerayBookingSystem.Microsoft.AspNetCore.StaticWebAssets.props",

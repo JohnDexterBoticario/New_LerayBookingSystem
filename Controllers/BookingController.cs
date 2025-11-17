@@ -1,53 +1,69 @@
 using System.Security.Claims;
-using System.IO; 
-using New_LeRayBookingSystem.Data;
-using New_LeRayBookingSystem.Models.DTOs;
-using New_LeRayBookingSystem.Models;
-using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting; // REQUIRED for IWebHostEnvironment
+using Microsoft.AspNetCore.Hosting;
+using New_LeRayBookingSystem.Data;
+using New_LeRayBookingSystem.Models;
+using New_LeRayBookingSystem.Models.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace New_LeRayBookingSystem.Controllers
 {
-    // --- START OF API CONTROLLER ---
-    // Inject IWebHostEnvironment to correctly access wwwroot folder.
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
-    public class BookingsController(
-        ApplicationDbContext context,
-        ILogger<BookingsController> logger,
-        IWebHostEnvironment webHostEnvironment) : ControllerBase
+    public class BookingsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context = context;
-        private readonly ILogger<BookingsController> _logger = logger;
-        private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
+        private readonly ApplicationDbContext _context;
+        private readonly ILogger<BookingsController> _logger;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        // Note: Switched to CustomerService? for local variable type consistency
-        private string GetUserId() => User.FindFirstValue(ClaimTypes.NameIdentifier) ??
-                                      throw new UnauthorizedAccessException("User ID not found in token");
+        public BookingsController(
+            ApplicationDbContext context,
+            ILogger<BookingsController> logger,
+            IWebHostEnvironment webHostEnvironment)
+        {
+            _context = context;
+            _logger = logger;
+            _webHostEnvironment = webHostEnvironment;
+        }
 
+        // ----------------------------
+        // HELPERS
+        // ----------------------------
+        private string GetUserId() =>
+            User.FindFirstValue(ClaimTypes.NameIdentifier)
+            ?? throw new UnauthorizedAccessException("User ID not found");
+
+        private string GetIpAddress() =>
+            HttpContext?.Connection?.RemoteIpAddress?.ToString() ?? "Unknown";
+
+        // ----------------------------
+        // GET: api/bookings/my-bookings
+        // ----------------------------
         [HttpGet("my-bookings")]
         public async Task<ActionResult<IEnumerable<BookingDetailsDto>>> GetUserBookings()
         {
             var userId = GetUserId();
 
             var bookings = await _context.Appointments
-                .Where(b => b.UserId == userId && b.Status == "Confirmed" && b.AppointmentDate > DateTime.UtcNow)
-                // Using CustomerService navigation property
+                .Where(b => b.UserId == userId && b.AppointmentDate > DateTime.UtcNow)
                 .Include(b => b.CustomerService)
+                .OrderBy(b => b.AppointmentDate)
                 .Select(b => new BookingDetailsDto
                 {
                     Id = b.Id,
                     StartTime = b.AppointmentDate,
-                    // Use CustomerService navigation property
-                    EndTime = b.CustomerService != null ? b.AppointmentDate.Add(b.CustomerService.Duration) : b.AppointmentDate,
+                    EndTime = b.CustomerService != null
+                        ? b.AppointmentDate.Add(b.CustomerService.Duration)
+                        : b.AppointmentDate,
                     Status = b.Status,
                     Notes = b.Notes,
-                    Service = (b.CustomerService == null) ? null : new ServiceDto
+                    Service = b.CustomerService == null ? null : new ServiceDto
                     {
-                        Id = b.CustomerService!.Id,
+                        Id = b.CustomerService.Id,
                         Name = b.CustomerService.ServiceName,
                         Description = b.CustomerService.Description,
                         Price = b.CustomerService.Price,
@@ -59,153 +75,195 @@ namespace New_LeRayBookingSystem.Controllers
             return Ok(bookings);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateBooking([FromForm] CreateBookingDto createBookingDto)
+        // ----------------------------
+        // GET: api/bookings/{id}
+        // ----------------------------
+        [HttpGet("{id}")]
+        public async Task<ActionResult<BookingDetailsDto>> GetBookingById(int id)
         {
-            // --- 1. Validation Check
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            // --- 2. Service and User Retrieval (using CustomerService model) ---
             var userId = GetUserId();
-            CustomerService? service = null; // Variable type changed to CustomerService
 
-            if (createBookingDto.ServiceId == "ServiceName")
+            var b = await _context.Appointments
+                .Include(x => x.CustomerService)
+                .FirstOrDefaultAsync(x => x.Id == id && x.UserId == userId);
+
+            if (b == null) return NotFound();
+
+            var dto = new BookingDetailsDto
             {
-                // Correctly querying the CustomerServices DbSet
-                service = await _context.CustomerServices.FirstOrDefaultAsync(s => s.Category == "ServiceName");
-            }
-            else
-            {
-                if (int.TryParse(createBookingDto.ServiceId, out int serviceId))
+                Id = b.Id,
+                StartTime = b.AppointmentDate,
+                EndTime = b.CustomerService != null
+                    ? b.AppointmentDate.Add(b.CustomerService.Duration)
+                    : b.AppointmentDate,
+                Status = b.Status,
+                Notes = b.Notes,
+                Service = (b.CustomerService == null) ? null : new ServiceDto
                 {
-                    // Correctly querying the CustomerServices DbSet
-                    service = await _context.CustomerServices.FirstOrDefaultAsync(s => s.Id == serviceId);
+                    Id = b.CustomerService.Id,
+                    Name = b.CustomerService.ServiceName,
+                    Description = b.CustomerService.Description,
+                    Price = b.CustomerService.Price,
+                    DurationInMinutes = (int)b.CustomerService.Duration.TotalMinutes
                 }
-            }
+            };
+
+            return Ok(dto);
+        }
+
+        // ----------------------------
+        // POST: api/bookings (Create Booking)
+        // ----------------------------
+        [HttpPost]
+        public async Task<IActionResult> CreateBooking([FromForm] CreateBookingDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userId = GetUserId();
+            var ip = GetIpAddress();
+
+            // ----------------------------
+            // FETCH SERVICE PROPERLY
+            // ----------------------------
+            if (!int.TryParse(dto.ServiceId, out int serviceId))
+                return BadRequest("Invalid service ID format.");
+
+            var service = await _context.CustomerServices
+                .FirstOrDefaultAsync(s => s.Id == serviceId);
 
             if (service == null)
             {
-                if (createBookingDto.ServiceId == "SERVICE_AGGREGATE")
-                {
-                    return BadRequest("Booking failed: Service Bundle placeholder configuration is missing. Please ensure a service exists in the 'Bundle' category.");
-                }
+                await LogAudit("CreateFailed", userId, ip, "Booking",
+                    $"Invalid service id {dto.ServiceId}", "");
 
-                return BadRequest($"Invalid service ID ({createBookingDto.ServiceId}) provided. The selected service could not be found.");
+                return BadRequest($"Service not found (ID = {dto.ServiceId}).");
             }
 
-            var startTime = createBookingDto.StartTime;
-
+            // ----------------------------
+            // DATE + TIME VALIDATION
+            // ----------------------------
+            var startTime = dto.StartTime;
             if (startTime == DateTime.MinValue)
             {
-                return BadRequest("Invalid date or time format in the request.");
+                await LogAudit("CreateFailed", userId, ip, "Booking",
+                    "Invalid booking date", "");
+
+                return BadRequest("Invalid booking date.");
             }
 
             var endTime = startTime.Add(service.Duration);
 
-            // ------------------------------------------------------------------
-            // --- 3. OVERLAPPING CHECK (CRITICAL FIX FOR LINQ TRANSLATION) ---
-            // ------------------------------------------------------------------
+            // ----------------------------
+            // TIME CONFLICT CHECK
+            // ----------------------------
+            // ---------------------------------------------
+// SAFE TIME CONFLICT CHECK (no EF translation)
+// ---------------------------------------------
+var existing = await _context.Appointments
+    .Where(b =>
+        b.Status == "Confirmed" &&
+        b.ServiceId == service.Id)
+    .Include(b => b.CustomerService)
+    .ToListAsync();   // <-- switch to in-memory (required)
 
-            // Step 1: Filter appointments in the database (server-side) by status and service ID.
-            // This is the efficient part of the query.
-            var confirmedBookingsQuery = _context.Appointments
-                .Where(b => b.Status == "Confirmed" && b.ServiceId == service.Id)
-                .Include(b => b.CustomerService);
-
-            // Step 2: Fetch results and switch to client-side (C#) evaluation using AsEnumerable().
-            // This allows the use of DateTime.Add(), which MySQL provider cannot translate.
-            var confirmedBookings = await confirmedBookingsQuery.ToListAsync();
-
-            // Step 3: Perform the overlap check in C# memory.
-            var overlappingBooking = confirmedBookings.Any(b =>
-                b.CustomerService != null &&
-
-                // Overlap exists if: (New start < Existing end) AND (New end > Existing start)
-                (startTime < b.AppointmentDate.Add(b.CustomerService.Duration)) &&
-                (endTime > b.AppointmentDate)
-            );
-
-            if (overlappingBooking)
-            {
-                return Conflict("The selected time slot for this service is no longer available.");
-            }
-
-            // --- 4. Handle File Upload (REQUIRED STEP) ---
-
-            if (createBookingDto.PaymentReceiptFile == null || createBookingDto.PaymentReceiptFile.Length == 0)
-            {
-                return BadRequest("Payment receipt file is mandatory for booking.");
-            }
-
-            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "receipts");
-
-            if (!Directory.Exists(uploadsFolder))
-            {
-                Directory.CreateDirectory(uploadsFolder);
-            }
-
-            var uniqueFileName = Guid.NewGuid().ToString() + "_" + createBookingDto.PaymentReceiptFile!.FileName;
-            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                await createBookingDto.PaymentReceiptFile.CopyToAsync(fileStream);
-            }
-
-            string receiptPath = $"/receipts/{uniqueFileName}";
-
-            // --- 5. Create Appointment Model
-var booking = new Appointment
+bool overlapping = existing.Any(b =>
 {
-    UserId = userId,
-    ServiceId = service.Id,
-    AppointmentDate = startTime,
-    Status = "Pending Verification",
-    Notes = createBookingDto.Notes,
+    var existingStart = b.AppointmentDate;
+    var existingEnd = existingStart.Add(b.CustomerService.Duration);
 
-    ServiceName = service.ServiceName,
-    PaymentMethod = createBookingDto.PaymentMethod ?? "Online",
-    PaymentStatus = "Pending Verification",
-    PaymentReceiptPath = receiptPath,
+    return startTime < existingEnd && endTime > existingStart;
+});
 
-    CreatedBy = userId,
-    UpdatedBy = userId,
-    LastUpdatedBy = userId,
-};
-
-// --- 5b. 🔥 ADD THE JUNCTION TABLE ENTRY (AppointmentService) 🔥 ---
-// NOTE: Assuming your junction model is called AppointmentService (singular) 
-// and that it is mapped to a DbSet in your ApplicationDbContext.
-
-var appointmentServiceEntry = new AppointmentService // Replace 'AppointmentService' with your actual model name
+if (overlapping)
 {
-    // The AppointmentId will be populated automatically when saving, but we link the objects first
-    Appointment = booking, // Link the new Appointment object
-    ServiceId = service.Id, // Link the valid Service ID
-    
-    // Add other required fields from your table definition
-    Price = service.Price, // Use the service price
-    Quantity = 1 // Default quantity
-};
+    await LogAudit("TimeSlotConflict", userId, ip, "Booking",
+        $"Time conflict for service {service.Id} at {startTime:o}", "");
 
-// Add the junction entity to its DbSet (assuming DbSet is named AppointmentServices)
-await _context.AppointmentServices.AddAsync(appointmentServiceEntry);
-// -------------------------------------------------------------------
+    return Conflict("Time slot unavailable.");
+}
 
-// --- 6. Save to Database
-await _context.Appointments.AddAsync(booking);
-await _context.SaveChangesAsync();
-            _logger.LogInformation("New appointment created: {BookingId} for user {UserId}", booking.Id, userId);
 
-            // --- 7. Return Result
-            return CreatedAtAction(nameof(GetUserBookings), new { id = booking.Id }, new BookingDetailsDto
+            // ----------------------------
+            // PAYMENT FILE (REQUIRED)
+            // ----------------------------
+            if (dto.PaymentReceiptFile == null || dto.PaymentReceiptFile.Length == 0)
+                return BadRequest("Payment receipt is required.");
+
+            var uploadsFolder = Path.Combine(
+                _webHostEnvironment.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"),
+                "receipts");
+
+            Directory.CreateDirectory(uploadsFolder);
+
+            var fileName = Guid.NewGuid().ToString("N") + "_" + dto.PaymentReceiptFile.FileName;
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            await using (var fs = new FileStream(filePath, FileMode.Create))
+                await dto.PaymentReceiptFile.CopyToAsync(fs);
+
+            string receiptPath = $"/receipts/{fileName}";
+
+            // ----------------------------
+            // CREATE BOOKING
+            // ----------------------------
+            var booking = new Appointment
+            {
+                UserId = userId,
+                ServiceId = service.Id,
+                AppointmentDate = startTime,
+                Status = "Pending Verification",
+                Notes = dto.Notes,
+                ServiceName = service.ServiceName,
+                PaymentMethod = dto.PaymentMethod ?? "Online",
+                PaymentStatus = "Pending Verification",
+                PaymentReceiptPath = receiptPath,
+                CreatedBy = userId,
+                UpdatedBy = userId,
+                LastUpdatedBy = userId
+            };
+
+            await _context.Appointments.AddAsync(booking);
+            await _context.SaveChangesAsync();
+
+            // ----------------------------
+            // LINK SERVICE VIA AppointmentService
+            // ----------------------------
+            var serviceEntry = new AppointmentService
+            {
+                AppointmentId = booking.Id,
+                ServiceId = service.Id,
+                Price = service.Price,
+                Quantity = 1
+            };
+
+            await _context.AppointmentServices.AddAsync(serviceEntry);
+            await _context.SaveChangesAsync();
+
+            // ----------------------------
+            // AUDIT SUCCESS
+            // ----------------------------
+            var summary = new
+            {
+                BookingId = booking.Id,
+                ServiceName = service.ServiceName,
+                Start = booking.AppointmentDate,
+                End = booking.AppointmentDate.Add(service.Duration),
+                Receipt = receiptPath
+            };
+
+            await LogAudit("Create", userId, ip, "Booking",
+                $"Created booking {booking.Id}", booking.Id.ToString(),
+                JsonSerializer.Serialize(summary));
+
+            // ----------------------------
+            // RESULT DTO
+            // ----------------------------
+            var result = new BookingDetailsDto
             {
                 Id = booking.Id,
                 StartTime = booking.AppointmentDate,
-                EndTime = endTime,
+                EndTime = booking.AppointmentDate.Add(service.Duration),
                 Status = booking.Status,
                 Notes = booking.Notes,
                 Service = new ServiceDto
@@ -216,35 +274,32 @@ await _context.SaveChangesAsync();
                     Price = service.Price,
                     DurationInMinutes = (int)service.Duration.TotalMinutes
                 }
-            });
+            };
+
+            return CreatedAtAction(nameof(GetBookingById), new { id = booking.Id }, result);
         }
-    } 
-    // --- END OF API CONTROLLER ---
-    
-    // The second controller must be outside the first controller's scope.
-    public class BookingController : Controller 
-    {
-        // ... other actions like Index or Details
 
-        [HttpPost]
-       public IActionResult SubmitBooking(CreateBookingDto model)// The name might be "Book" or "Create"
+        // ----------------------------
+        // AUDIT HELPER
+        // ----------------------------
+        private async Task LogAudit(string action, string userId, string ip,
+            string module, string description,
+            string? entityId = "", string? details = "")
         {
-            if (ModelState.IsValid)
+            var log = new AuditLog
             {
-                // 1. **Your Booking Logic** (e.g., saving data to a database)
-                //    db.Bookings.Add(model.Booking);
-                //    db.SaveChanges();
+                Action = action,
+                UserId = userId,
+                Module = module,
+                Description = description,
+                IpAddress = ip,
+                EntityType = module,
+                EntityId = entityId ?? "",
+                Details = details ?? ""
+            };
 
-                // 2. **🛑 CRITICAL CHANGE HERE 🛑**
-                //    INSTEAD OF: return View("Success"); // Which resulted in the 404
-
-                //    USE THIS TO REDIRECT TO THE HOME PAGE:
-                return RedirectToAction("Index", "Home");
-                // This tells the application: go to the "Index" action in the "HomeController" (your typical homepage)
-            }
-
-            // If validation failed, return the user back to the form
-            return View(model);
+            _context.AuditLogs.Add(log);
+            await _context.SaveChangesAsync();
         }
     }
-} 
+}

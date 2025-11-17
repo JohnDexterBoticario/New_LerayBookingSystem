@@ -4,16 +4,19 @@ using New_LeRayBookingSystem.Models;
 using New_LeRayBookingSystem.Models.DTOs;
 using System.Text;
 using Microsoft.AspNetCore.WebUtilities;
+using New_LeRayBookingSystem.Services; // <-- ADDED
 
 namespace New_LeRayBookingSystem.Controllers
 {
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IEmailService _emailService; // <-- ADDED
 
-        public AccountController(UserManager<ApplicationUser> userManager)
+        public AccountController(UserManager<ApplicationUser> userManager, IEmailService emailService) // <-- MODIFIED CONSTRUCTOR
         {
             _userManager = userManager;
+            _emailService = emailService; // <-- ADDED ASSIGNMENT
         }
 
         // GET: /Account/ForgotPassword
@@ -47,8 +50,24 @@ namespace New_LeRayBookingSystem.Controllers
                     protocol: Request.Scheme
                 );
 
-                // TODO: Send email via your IEmailService
-                // Example: await _emailService.SendEmailAsync(user.Email, "Reset Password", $"Click here: {resetLink}");
+                // START: SEND EMAIL IMPLEMENTATION
+                var emailBody = $@"
+                    Hello {user.FullName},<br/><br/>
+                    You requested a password reset. Please click the link below to reset your password:<br/><br/>
+                    <a href='{resetLink}'>Reset Password Link</a><br/><br/>
+                    If you did not request this, please ignore this email.
+                ";
+
+                try
+                {
+                    await _emailService.SendEmailAsync(user.Email!, "Password Reset Request", emailBody);
+                }
+                catch (Exception ex)
+                {
+                    // Log the failure but continue to the confirmation screen for security best practice (not revealing if the user exists).
+                    Console.WriteLine($@"PASSWORD RESET EMAIL FAILURE for {user.Email}: {ex.Message}");
+                }
+                // END: SEND EMAIL IMPLEMENTATION
             }
 
             return RedirectToAction("ForgotPasswordConfirmation");

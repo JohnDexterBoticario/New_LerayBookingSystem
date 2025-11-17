@@ -57,7 +57,7 @@ namespace New_LeRayBookingSystem.Models
         // --- Audit Trail (Created / Updated By) ---
         [Required]
         [ForeignKey(nameof(CreatedByUser))]
-        public string CreatedBy { get; set; } = string.Empty;
+        public string? CreatedBy { get; set; }
 
         public ApplicationUser? CreatedByUser { get; set; }
 
@@ -83,7 +83,8 @@ namespace New_LeRayBookingSystem.Models
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
         // FIX 3: Use UTC for consistency across all database records
         public DateTime LastUpdatedAt { get; set; } = DateTime.UtcNow;
-        
+        public string? ApplicationUserId { get; internal set; }
+
 
         // --- Constructors ---
 

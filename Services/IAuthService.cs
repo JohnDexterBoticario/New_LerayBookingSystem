@@ -1,5 +1,4 @@
 using New_LeRayBookingSystem.Models.DTOs;
-
 namespace New_LeRayBookingSystem.Services
 {
     public interface IAuthService

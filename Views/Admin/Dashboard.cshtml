@@ -1,8 +1,9 @@
 ﻿@model New_LeRayBookingSystem.ViewModels.DashboardViewModel
 
 @{
-    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+    
     ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
     var appointmentsChartData = Newtonsoft.Json.JsonConvert.SerializeObject(Model.AppointmentsByMonth);
     var salesChartData = Newtonsoft.Json.JsonConvert.SerializeObject(Model.SalesOverTime);
     var topServicesData = Newtonsoft.Json.JsonConvert.SerializeObject(Model.TopServices);

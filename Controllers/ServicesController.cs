@@ -1,122 +1,147 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using New_LeRayBookingSystem.Data;
 using New_LeRayBookingSystem.Models;
-using System.Threading.Tasks;
+using New_LeRayBookingSystem.Models.DTOs;
+using New_LeRayBookingSystem.Services;
 
 namespace New_LeRayBookingSystem.Controllers
 {
-    [Authorize] // Default: only authenticated users can view services
-    public class ServicesController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
+    public class ServicesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IAuditService _audit;
 
-        public ServicesController(ApplicationDbContext context)
+        public ServicesController(ApplicationDbContext context, IAuditService audit)
         {
             _context = context;
+            _audit = audit;
         }
 
-        // GET: Services
-        [AllowAnonymous] // Allow public or client viewing of service list
-        public async Task<IActionResult> Index()
+        // GET: api/Services
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
         {
-            return View(await _context.Services.ToListAsync());
+            var services = await _context.CustomerServices.ToListAsync();
+
+            await _audit.LogAsync(
+                // match your IAuditService signature (action,module,entityId,...). 
+                // I'm using the 6-arg signature you had earlier: (userId, action, module, description, ipAddress, userAgent)
+                User?.Identity?.IsAuthenticated == true ? User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "Anonymous" : "Anonymous",
+                "Viewed",
+                "Services",
+                "Viewed all customer services",
+                HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown",
+                Request.Headers["User-Agent"].ToString()
+            );
+
+            return Ok(services);
         }
 
-        // GET: Services/Details/5
-        [AllowAnonymous]
-        public async Task<IActionResult> Details(int? id)
+        // GET: api/Services/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
         {
-            if (id == null)
-                return NotFound();
+            var service = await _context.CustomerServices.FindAsync(id);
+            if (service == null) return NotFound();
 
-            var service = await _context.Services.FirstOrDefaultAsync(m => m.Id == id);
-            if (service == null)
-                return NotFound();
+            await _audit.LogAsync(
+                User?.Identity?.IsAuthenticated == true ? User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "Anonymous" : "Anonymous",
+                "Viewed",
+                "Services",
+                $"Viewed customer service ID {id}",
+                HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown",
+                Request.Headers["User-Agent"].ToString()
+            );
 
-            return View(service);
+            return Ok(service);
         }
 
-        // ✅ ADMIN-ONLY: GET Create
-        [Authorize(Roles = "Admin,SuperAdmin")]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // ✅ ADMIN-ONLY: POST Create
+        // POST: api/Services
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin,SuperAdmin")]
-        public async Task<IActionResult> Create(Service service)
+        public async Task<IActionResult> Create([FromBody] CreateServiceDto dto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var service = new CustomerService
             {
-                _context.Add(service);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(service);
+                ServiceName = dto.ServiceName,
+                Category = dto.Category,
+                Price = dto.Price,
+                Duration = TimeSpan.FromMinutes(dto.DurationMinutes),
+                IsBundle = dto.IsBundle,
+                Description = dto.Description
+            };
+
+            _context.CustomerServices.Add(service);
+            await _context.SaveChangesAsync();
+
+            await _audit.LogAsync(
+                User?.Identity?.IsAuthenticated == true ? User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "Anonymous" : "Anonymous",
+                "Created",
+                "Services",
+                $"Created customer service '{service.ServiceName}' (ID {service.Id})",
+                HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown",
+                Request.Headers["User-Agent"].ToString()
+            );
+
+            return CreatedAtAction(nameof(Get), new { id = service.Id }, service);
         }
 
-        // ✅ ADMIN-ONLY: Edit
-        [Authorize(Roles = "Admin,SuperAdmin")]
-        public async Task<IActionResult> Edit(int? id)
+        // PUT: api/Services/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateServiceDto dto)
         {
-            if (id == null)
-                return NotFound();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var service = await _context.Services.FindAsync(id);
-            if (service == null)
-                return NotFound();
+            var service = await _context.CustomerServices.FindAsync(id);
+            if (service == null) return NotFound();
 
-            return View(service);
+            service.ServiceName = dto.ServiceName;
+            service.Category = dto.Category;
+            service.Price = dto.Price;
+            service.Duration = TimeSpan.FromMinutes(dto.DurationMinutes);
+            service.IsBundle = dto.IsBundle;
+            service.Description = dto.Description;
+
+            await _context.SaveChangesAsync();
+
+            await _audit.LogAsync(
+                User?.Identity?.IsAuthenticated == true ? User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "Anonymous" : "Anonymous",
+                "Updated",
+                "Services",
+                $"Updated customer service ID {id} ({service.ServiceName})",
+                HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown",
+                Request.Headers["User-Agent"].ToString()
+            );
+
+            return NoContent();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin,SuperAdmin")]
-        public async Task<IActionResult> Edit(int id, Service service)
+        // DELETE: api/Services/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id != service.Id)
-                return NotFound();
+            var service = await _context.CustomerServices.FindAsync(id);
+            if (service == null) return NotFound();
 
-            if (ModelState.IsValid)
-            {
-                _context.Update(service);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(service);
-        }
+            _context.CustomerServices.Remove(service);
+            await _context.SaveChangesAsync();
 
-        // ✅ ADMIN-ONLY: Delete
-        [Authorize(Roles = "Admin,SuperAdmin")]
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-                return NotFound();
+            await _audit.LogAsync(
+                User?.Identity?.IsAuthenticated == true ? User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "Anonymous" : "Anonymous",
+                "Deleted",
+                "Services",
+                $"Deleted customer service ID {id} ({service.ServiceName})",
+                HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown",
+                Request.Headers["User-Agent"].ToString()
+            );
 
-            var service = await _context.Services.FirstOrDefaultAsync(m => m.Id == id);
-            if (service == null)
-                return NotFound();
-
-            return View(service);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin,SuperAdmin")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var service = await _context.Services.FindAsync(id);
-            if (service != null)
-            {
-                _context.Services.Remove(service);
-                await _context.SaveChangesAsync();
-            }
-            return RedirectToAction(nameof(Index));
+            return NoContent();
         }
     }
 }
